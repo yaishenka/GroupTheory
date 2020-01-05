@@ -1,1 +1,3 @@
-# GroupTheory
+# Теория групп. Штепин В. В. 
+## Затехано  [Виталей](https://vk.com/vitalii_kondratiuk) 
+## ФПМИ МФТИ 2019
