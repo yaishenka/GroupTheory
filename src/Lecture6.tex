@@ -1,0 +1,253 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 6}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-10-10}}
+
+\begin{document}
+\maketitle
+
+\section{Лемма Бернсайда о неподвижных точках}
+
+Пусть $\Omega = Sub(G)$
+
+Рассмотрим действие $G$ на $\Omega$ сопряжением: $I_a(H) = aHa^{-1} \in Sub(G)$
+
+Сопряжение "--- это автоморфизм, а значит образ подгруппы "--- это подгруппа.
+
+Орбита $G(H) = \{aHa^{-1} \mid a \in G\}$ "--- множество подгрупп $G$, сопряженных $H$.
+
+$St(H) = \{a \in G \mid aHa^{-1}=H\} \in G$.
+
+\vspace{5pt}
+
+\underline{Опр.} Полученная подгруппа "--- \textbf{нормализатор} подгруппы $H$ в $G$. Обозначение: $N_G(H)$.
+
+$N_G(H) = \{a \in G \mid aH = Ha\}$. $H \leq N_G(H)$, так как $\forall h \in H \  hH = Hh = H$. По критерию нормальности получаем $H \triangleleft N_G(H)$.
+
+Помимо нормализатора подгруппы существует и централизатор подгруппы $H$ в $G$.
+
+\vspace{5pt}
+
+\underline{Опр.} \textbf{Централизатор} подгруппы $H$ в $G$ "--- это множество $C_G(H) = \{a \in G \mid ah = ha \forall h \in H\} \leq G$.
+
+\vspace{10pt}
+
+\textbf{Утв.}
+\begin{enumerate}
+	\item $C_G(H) \leq N_G(H)$
+	\item $N_G(H)$ "--- наибольшая подгруппа в $G$, что $H$ в ней нормальная подгруппа
+\end{enumerate}
+
+\textbf{Доказательство}
+
+Провести самостоятельно.
+
+\vspace{10pt}
+
+\underline{Опр.} Пусть $I : G \rightarrow S(G)$ "--- действие. $I$ \textbf{транзитивно}, если у него есть всего одна орбита $\Leftrightarrow \forall \omega_1, \omega_2 \in \Omega \  \exists a \in G: \  a(\omega_1) = \omega_2$.
+
+\vspace{10pt}
+
+\textbf{Теорема (лемма Бернсайда)}
+
+Пусть конечная группа $G$ действует транзитивно на конечное $\Omega$ и $N(a)$ "--- число элементов $\Omega$, которые неподвижны под действием $a$.
+
+$N(a) = |\{\omega \in \Omega \mid a(\omega) = \omega\}|$. 
+
+Тогда $|G| = \sum \limits_{a \in G} N(a)$
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+Пусть $\omega \in \Omega$. Тогда $|St(\omega)| = \frac{|G|}{|G(\omega)|} = \frac{|G|}{|\Omega|}$ в силу транзитивности
+
+Пусть $\Delta$ "--- совокупность пар вида $(a, \omega) \in G \bigtimes \Omega$, что $a(\omega) = \omega$.
+
+С одной стороны, $|\Delta| = \sum \limits_{\omega \in \Omega} |St(\omega)| = \sum \limits_{\omega \in \Omega} \frac{|G|}{|\Omega|} = \frac{|G|}{|\Omega|}|\Omega| = |G|$.
+
+С другой стороны, $|\Delta| = \sum \limits_{a \in G} N(a)$. 
+
+Значит, $|G| = \sum \limits_{a \in G} N(a)$ 
+
+\vspace{10pt}
+
+\textbf{Следствие}
+
+Пусть конечная группа $G$ действует на конечное $\Omega$
+
+Тогда $|\Omega / G| = \frac{1}{|G|} \sum \limits_{a \in G} N(a)$
+
+\textbf{Доказательство}
+
+Пусть $\Omega_1 ... \Omega_s$ "--- все попарно различные орбиты действия.
+
+Пусть $N_i(a) = |\{\omega \in \Omega_i \mid a(\omega) = \omega\}|$ "--- количество неподвижных точек $I_a$ в $\Omega_i$.
+
+Действие $I : G \rightarrow \Omega_i$ транзитивно по определению и $|G| = \sum \limits_{a \in G} N_i(a)$. Причем это верно для всех $i$. Просуммируем равенство по всем $i \in \{1, ..., s\}$.
+
+$S|G| = \sum \limits_{i = 1}^s \sum \limits_{a \in G} N_i(a) = \sum \limits_{a \in G} N(a)$.
+
+Выражение $\frac{\sum \limits_{a \in G} N(a)}{|G|}$ называется \textbf{средним числом неподвижных точек}.
+
+\section{Элементы теории представлений}
+
+\underline{Опр.} Пусть $V$ "--- линейное пространство над $F$. \textbf{Линейное представление} $G$ в пространство $V$ "--- это произвольный гомоморфизм $T : G \rightarrow GL(V)$ "--- обратимые линейные преобразования в $V$. $GL(V) \subset S(V)$.
+
+\vspace{5pt}
+
+\underline{Опр.} $dim(T) = dim_F(V)$ "--- размерность представления.
+
+Будем считать, что $F$ "--- это поле действительных или комплексных чисел.
+
+\underline{Опр.} Представление $T$ \textbf{неприводимо}, если в $V$ нет нетривиальных (отличных от $\{0\}$ и $V$) инвариантных подпространств. $W \subset V$ "--- инвариантно относительно $T$, если $\forall g \in G \  T(g)W \subset W$
+
+\vspace{5pt}
+
+\underline{Опр.} $T : G \rightarrow GL(V)$ \textbf{вполне приводимо}, если для каждого инвариантного относительно $T$ подпространства $W$ найдется инвариантное дополнение, т.е. $\exists U \leq V$ "--- инвариантно, и $V = W \bigoplus U$.
+
+Тогда $T$ можно рассмотреть на  $W$ и $U$.
+
+\vspace{5pt}
+
+\underline{Опр.} $T = T_1 \bigoplus T_2$, где $T_1, T_2$ "--- сужения $T$ на $U$ и $W$ соответственно.
+
+\vspace{10pt}
+
+\textbf{Теорема(Машке)}
+
+Всякое представление $T: G \rightarrow GL(V)$, где $G$ "--- конечна, $V$ над $R$ или $C$ неприводимо или разлагается в прямую сумму неприводимых.
+
+\underline{Основная задача теории представлений} "--- разложить каждое представление на неприводимые, и описать все неприводимые представления.
+
+\vspace{5pt}
+
+\textbf{Опр.} Функция $X: G \rightarrow F$ "--- \textbf{характер представления} $T$, если $X(g) = tr(T_g)$.
+
+Всякое представление задается, с точностью до изоморфизма, своим характером.
+
+Пусть $T_1: G \rightarrow GL(V_1)$ и $T_2: G \rightarrow GL(V_2)$.
+
+\textbf{Изоморфизм представлений} "--- линейное отображение $S: V_1 \rightarrow V_2$, что $S \circ T_1(G) = T_2(G) \circ S$.
+
+\vspace{10pt}
+
+\textbf{Утв.}
+Характер любого представления $G$ постоянен на классах сопряженных элементов.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+$tr(T(axa^{-1})) = tr(T(a)T(x)T(a)^{-1}) = tr(T(x))$ по свойствам следа.
+
+\vspace{10pt}
+
+Пусть $F = C$ и $H_C(G)$ "--- множество всех комплекснозначных функций, постоянных на классах сопряженных элементов.
+
+$dim(H_C(G))$ "--- количество таких классов.
+
+Можно ввести скалярное произведение на $H_C(G)$: $(f, g) = \frac{\sum \limits_{a \in G} f(a)\overline{g(a)}}{|G|}$
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Характеры неприводимых представлений конечной группы образуют ОНБ в $H_C(G)$.
+
+\textbf{Следствие}
+
+$T: G \rightarrow GL(V)$ неприводимо $\Leftrightarrow (X_T, X_T) = 1$
+
+\vspace{10pt}
+
+\textbf{Следствие}
+$T = m_1T_1 \bigoplus m_2T_2 \bigoplus ... \bigoplus m_sT_s$ "--- попарно различные неприводимые представления.
+
+\vspace{10pt}
+
+\textbf{Теорема (Бернсайда)}
+
+Если $T_1 , ... , T_s$ "--- попарно неизоморфные неприводимые комплексные представления конечной группы и $n_i = dim(T_i)$, то $|G| = \sum \limits_{i = 1}^n n_i^2$
+
+\section{Прямые и полупрямые произведения групп}
+
+\textbf{Опр.} Пусть $A, B$ "--- группы относительно произведения. \textbf{Внешнее прямое произведение} $A \times B$ "--- множество всех упорядоченных пар с операцией $(a_1, b_1)(a_2, b_2) = (a_1a_2, b_1, b_2) \in A \times B$.
+
+Это множество является группой с нейтральным элементом $(e,e)$ и обратным элементом $(a, b)^{-1} = (a^{-1}, b^{-1})$.
+
+Если $A, B$ "--- аддитивные группы, то это называется внешней прямой суммой.
+
+\vspace{10pt}
+
+\textbf{Утв. (свойства внешнего прямого произведения)}
+\begin{enumerate}
+	\item в $A \times B$ есть подгруппы $A \times \{e\}$ и $\{e\} \times B$, изоморфные $A$ и $B$.
+	
+	\item $A \times \{e\} \triangleleft A \times B$, $\{e\} \times B \triangleleft A \times B$ и элементы этих групп коммутируют.
+	
+	\item $(A \times \{e\}) \cap (\{e\} \times B) = \{(e, e)\}$ "--- пересечение тривиально
+	
+	\item $(A \times \{e\}) * (\{e\} \times B) = A \times B$.
+\end{enumerate}
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $(A \times \{e\}) \simeq A$. Изоморфизм: $(a, e) \rightarrow a$
+	\item Пусть $(a, b) \in A \times B, \  (a', e) \in A \times \{e\}$. Тогда $(a, b)^{-1}(a', e)(a, b) = (a^{-1}a'a, e) \in A \times \{e\}$. По критерию нормальности $A \times \{e\} \triangleleft A \times B$.
+	
+	$(a, e)(e, b) = (a, b) = (e, b)(a, e)$ "--- коммутируют.
+	
+	\item в), г) очевидно.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Теорема (о разложении группы в прямое произведение подгрупп)}
+
+Пусть в $G$ есть подгруппы $A, B$ и
+\begin{enumerate}
+	\item $A \cap B = \{e\}$
+	\item $A \triangleleft G, \  B \triangleleft G$
+	\item $AB = G$.
+\end{enumerate}
+
+Тогда $G \simeq A \times B$
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Покажем, что элементы из $A$ и из $B$ коммутируют между собой.
+	
+	$\forall a \in A, \forall b \in B$ верно $ab = ba$, так как $aba^{-1}b^{-1} \in B$ в силу нормальности $B$. Так же $aba^{-1}b^{-1} \in A$. Значит $aba^{-1}b^{-1} \in A \cap B = \{e\}$.
+	
+	\item Рассмотрим отображение $\phi: A \times B \rightarrow G, \  \phi(a,b) = ab$. По пункту 1, $\phi$ "--- гомоморфизм, так как $\phi(a_1, b_1)\phi(a_2, b_2) = a_1b_1a_2b_2 = a_1a_2b_1b_2 = \phi((a_1, b_1)(a_2, b_2))$. Причем $\phi$ сюръективно, так как $\forall x \in G \  x = ab, \  a \in A, b \in B$ по условию 3. Верно, что $Im(\phi) = G$.
+
+	Проверим, что $ker(\phi) = \{(e, e)\}$. Если $\phi(ab) = e$, то $ab = e$. Значит $a = b^{-1}$. Но $ \in A, \   b^{-1} \in B$, значит $a = b = e$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Опр.} Группа $G$, удовлетворяющая всем условиям теоремы называется \textbf{внутренним прямым произведением} $A$ и $B$.
+
+\vspace{10pt}
+
+\textbf{Следствие}
+
+Внешнее прямое произведение подгрупп изоморфно внутреннему. Далее будем опускать слова ''внешнее'' и ''внутреннее''.
+
+\textbf{Опр.} Пусть $A, B$ "--- мультипликативные группы и задано действие $B$ автоморфизмами группы $A$, т.е. $I: B \rightarrow Aut(A)$.
+
+Множество $A \times B = \{(a, b) \mid a \in A, b \in B\}$ с операцией умножения пар $(a_1, b_1)(a_2, b_2) = (a_1I_{b_1}(a_2), b_1b_2)$ "--- \textbf{полупрямое произведение} групп $A$ и $B$. Обозначение: $A \rtimes B$ 
+\end{document}

@@ -1,0 +1,206 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 9}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-10-31}}
+
+\begin{document}
+\maketitle
+
+\section{Критерий разрешимости группы}
+
+\textbf{Теорема (критерий разрешимости в терминах нормальной подгруппы)}
+
+Пусть $K \triangleleft G$. Тогда $G$ "--- разрешима $\Leftrightarrow K$ и $G/K$ разрешимы.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Необходимость. Пусть $G^{(n)} = \{e\}$. $K \triangleleft G \Rightarrow K' \triangleleft G' \Rightarrow K^{(n)} \triangleleft G^{(n)} = \{e\} \Rightarrow K$ разрешима.
+	
+	Обозначим $\overline{G} = G/K$. Пусть $p: G \rightarrow \overline{G}$ "--- канонический гомоморфизм. $p\!\restriction_{G'}: G' \rightarrow \overline{G}'$, т.е. $p(G') \subset \overline{G}'$, так как гомоморфизм сохраняет коммутаторы.
+	
+	Всякий коммутатор элементов из $\overline{G}$ "--- образ коммутатора элементов из $G$. В силу сюръективности получаем $p(G^{(n)}) = \overline{G}^{(n)}$, но $G^{(n)} = \{e\} \Rightarrow \overline{G}^{(n)} = \{e\}$ и $\overline{G}$ разрешима.
+	
+	\item Достаточность. 
+	
+	Пусть $K$ и $\overline{G}$ разрешимы. Пусть $K^{(n)} = \{e\}$ и $\overline{G}^{(l)} = \{e\}$. $p: G \rightarrow \overline{G}$ "--- канонический гомоморфизм. $p(G^{(l)}) = \overline{G}^{(l)} = \{e\} \Rightarrow G^{(l)} \subset Ker(p) = K \Rightarrow G^{(l + n)} \subset K^{(n)} = \{e\} \Rightarrow G$ "--- разрешима.	 
+\end{enumerate}
+
+\vspace{10pt}
+	
+\textbf{Следствие}
+	
+Пусть $|G:H| = 2$. Тогда $G$ разрешима $\Leftrightarrow H$ "--- разрешима.
+	
+\textbf{Доказательство}
+	
+$H \triangleleft G$ как группа индекса 2. $G/H \simeq C_2$ "--- разрешима (абелева)
+	
+\vspace{5pt}
+	
+\textbf{Пример}
+	
+$H = \langle R \rangle \leq D_n, \  H \simeq C_n$ "--- разрешима и $|D_n:H| = 2$. Значит, $D_n$ разрешима.
+	
+\vspace{10pt}
+	
+\textbf{Следствие}
+	
+Пусть $G$ "--- конечна, $K_1, K_2 \triangleleft G$ и разрешимы. Тогда $K_1K_2$ нормальная и разрешимая.
+	
+\textbf{Доказательство}
+	
+$K_1K_2 \triangleleft G$ "--- было доказано. $K_1K_2/K_2 \simeq K_1/(K_1 \cap K_2)$ по первой теореме об изоморфизме. $K_1/(K_1 \cap K_2)$ разрешима, так как $K_1$ разрешима. По критерию, $K_1K_2$ так же разрешима.
+	
+\vspace{10pt}
+	
+\textbf{Теорема}
+	
+Пусть $G$ "--- конечная группа. Тогда в $G$ найдется наибольшая нормальная разрешимая подгруппа $S$. Более того, $G/S$ не содержит нетривиальных разрешимых подгрупп.
+	
+\textbf{Доказательство}
+	
+Пусть $K_1, ... , K_s$ "--- все нормальные разрешимые подгруппы $G$. Положим $S = \langle K_1 \cup K_2 ... \cup K_s \rangle$. По следствию, $S$ нормальная и разрешимая, причем $S$ "--- максимальная такая подгруппа.
+	
+Пусть в $G/S$ есть нетривиальные ($\neq \{e\}$) разрешимые нормальные подгруппы: $L/S \triangleleft G/S \Rightarrow L \triangleleft G$ по второй теореме об изоморфизме. Так как $S, L/S$ нормальные и разрешимые группы, то и $L$ нормальная и разрешимая по критерию в терминах нормальной подгруппы. Значит, $S \triangleleft L \triangleleft G$, причем, в силу нетривиальности, $L \neq S$ "--- противоречие с максимальностью $S$.
+	
+\vspace{10pt}
+	
+\underline{Опр.} Построенная наибольшая нормальная разрешимая подгруппа "--- \textbf{разрешимый радикал $S(G)$}
+	
+\vspace{5pt}
+	
+\textbf{Теорема (критерий разрешимости)}
+	
+Следующие условия эквивалентны:
+\begin{enumerate}
+	\item $G$ "--- разрешима
+	\item В $G \  \exists$ цепочка подгрупп $G = G_0 \geq G_1 \geq ... \geq G_n = \{e\}$ со свойствами $G_k \triangleleft G$ и $G_{k}/G_{k+1}$ абелева.
+	\item В $G \  \exists$ цепочка подгрупп $G = G_0 \geq G_1 \geq ... \geq G_n = \{e\}$ со свойствами $G_{k+1} \triangleleft G_k$ и $G_{k}/G_{k+1}$ абелева.
+\end{enumerate}
+
+\textbf{Доказательство}
+
+\begin{enumerate}
+	\item $1 \Rightarrow 2$
+	Положим $G_k = G^{(k)}$ "--- производный ряд. Если $K \triangleleft G$, то $K' \triangleleft G$ по свойству производной. Значит $G_k \triangleleft G$.
+	
+	По свойствам коммутанта $G/G'$ абелева, значит $G_k/G_{k+1}$ абелева.
+	
+	\item $2 \Rightarrow 3$ Очевидно, $G_{k+1} \triangleleft G_k$
+	\item $3 \Rightarrow 1$ Покажем, что $\forall k \  G^{(k)} \leq G_k$ индукцией по $k$.
+	
+	База: $G_0 = G \subset G$
+	
+	Переход: Пусть $G^{(k)} \subset G_k$. Тогда $G^{(k+1)} = [G^{(k)}, G^{(k)}] \subset [G_k, G_k]$. $G_k/G_{k+1}$ абелева $\Leftrightarrow \  \forall x, y \in G_k [xG_{k+1}, yG_{k+1}] = \{G_{k+1}\}$. $[x, y]G_{k+1} = [xG_{k+1}, yG_{k+1}] = G_{k+1} \Leftrightarrow [x, y] \in G_{k+1} \Rightarrow [G_k, G_k] \subset G_{k+1}$ 
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Напоминание}
+
+Конечная группа $G$ "--- это $p$-группа, если $|G| = p^n$, $p$ "--- простое.
+
+\textbf{Теорема}
+
+Всякая $p$-группа $G$ разрешима
+
+\textbf{Доказательство}
+
+Было доказано, что всякая $p$-группа имеет нетривиальный центр $Z = Z(G) \neq \{e\}$
+
+\begin{enumerate}
+	\item Если $Z = G$, то $G$ абелева и разрешима.
+	\item Докажем индукцией по $n$:
+	
+	База: Пусть $|G| = p \Rightarrow G$ "--- циклична по теореме Лагранжа и разрешима.
+	
+	Переход: Пусть $\forall G: \  |G| < p^n$ доказано. Пусть $\{e\} < Z < G \Leftrightarrow |G/Z| < p^n \Leftrightarrow G/Z$ разрешима ($|G/Z| = p^m,\  m < n$). $Z$ разрешима, так как абелева. $Z \triangleleft G$, так как $\forall x \in G \  xZ = Zx$. Значит, $G$ разрешима.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Следствие}
+
+Если $G$ "--- $p$-группа, то $G' \neq G$
+
+\textbf{Доказательство}
+
+Если $G' = G$, то $\forall n \  G^{(n)} = G$ "--- противоречие с разрешимостью.
+
+\vspace{10pt}
+
+\textbf{Теорема (о подгруппах в конечной $p$-группе)}
+
+Пусть $G$ "--- $p$-группа и $|G| = p^n$.
+
+Тогда $\forall k, 1 \leq k \leq n$ в $G$ есть подгруппа $H$ мощности $p^k$.
+
+\textbf{Доказательство}
+
+Индукция по $k$.
+
+База: $k = 0, \  H = \{e\}$
+
+Переход: Пусть $\exists$ подгруппа $H_k, \  |H_k| = p^k, \  k \leq n$. Покажем, что в $G$ есть подгрупаа порядка $k+1$ ($k + 1 \leq n)$. Пусть $Z = Z(G)$.
+
+$\exists a \in Z, \  a \neq e \Rightarrow \langle z \rangle \subset Z \Rightarrow ord(a) = p^l \Rightarrow$ в $\langle a \rangle$ есть элемент порядка $p$. Пусть $ord(z) = p$. $L = \langle z \rangle \triangleleft G$ (так как $z \in Z$). Рассмотрим $G/L$: $|G/L| \geq p^k$. По предположению индукции, в $G/L$ есть подгруппа порядка $p^k$. Пусть $H/L$ "--- подгруппа порядка $p^k$. Тогда $|H| = p^{k+1}$
+
+\section{Простые группы}
+
+\textbf{Опр.} Группа $G$ "--- \textbf{простая}, если она не имеет нетривиальных нормальных подгрупп.
+
+\vspace{5pt}
+
+\textbf{Теорема (об описании простых абелевых групп)}
+
+Среди абелевых групп простые только $C_p$ при простом $p$.
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $C_p$ простая по теореме Лагранжа
+	\item Если группа $G$ абелева и $|G| = n$ "--- составное число, то $G$ не простая. Возьмем $a \neq e$ и рассмотрим $|\langle a \rangle| = k \  \vdots \  p$ "--- простое. Тогда $(a^{\frac{k}{p}})^p = e \Rightarrow ord(a^{\frac{k}{p}}) = p \Rightarrow \langle a^{\frac{k}{p}} \rangle \neq G$ и $\langle a^{\frac{k}{p}} \rangle \triangleleft G$, так как $G$ абелева.
+	
+	Если $|G| = \infty$, и $\exists a: \  ord(a) = k$, то $\langle a \rangle \neq G$.
+	
+	Если $\forall a \  ord(a) = \infty$, то $\exists H \simeq Z, \  H = \langle a \rangle$. Тогда $\langle a^2 \rangle \leq H$ и $\langle a^2 \rangle \neq G$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Лемма}
+
+Пусть $|G:H| = 2$, $G$ "--- конечная группа. Тогда
+\begin{enumerate}
+	\item Если $C_G(h) \neq C_H(h)$, то $h^G = h^H$
+	\item Если $C_G(h) = C_H(h)$, то $h^G = \frac{h^H}{2}$, где $h^G = \{g^{-1}hg \mid g \in G\}$
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Пусть $a \in C_G(h) \setminus C_H(h) \Rightarrow ah = ha \Leftrightarrow a \in G/H \Rightarrow G = H \cup aH$
+	
+	$h^G = h^{(H \cup aH)} = h^H \cup h^{aH} = h^H \cup (h^a)^H = h^H \cup h^H = h^H$
+	
+	\item Пусть $C_G(h) = C_H(h)$. Тогда $|h^G| = \frac{|G|}{|C_G(h)|} = \frac{2|H|}{|C_H(h)|} = 2|h^H|$
+
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Замечание}
+
+Если $G = H \cup aH$, $a \notin H$ во втором случае, то $h^G = h^H \cup (h^a)^H$ и $(h^a)^H \neq h^H$, но $|(h^a)^H| = |h^H|$
+\end{document}

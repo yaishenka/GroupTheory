@@ -1,0 +1,238 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 2}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-09-12}}
+
+\begin{document}
+\maketitle
+
+\section{Нормальные подгруппы и их свойства}
+
+\underline{Опр.} В случае конечной группы число левых смежных классов равно числу правых смежных классов и называется \textbf{индексом группы} "--- $|G/H|$
+
+\vspace{10pt}
+
+\textbf{Утв.}
+Пусть $G$ "--- группа (конечная или бесконечная). Тогда $G / H \simeq H \textbackslash G$
+
+\textbf{Доказательство}
+Пусть $aH \in G/H$. Тогда $(aH)^{-1} = Ha^{-1} \  (H^{-1} = H)$ так как $H$ "--- подгруппа. Операция взятия обратного элемента в группе инволютивна (обратна сама себе и в квадрате равна тождественному отображению), то полученное соответствие между левыми и правыми смежными классами - биекция.
+
+\vspace{10pt}
+
+\textbf{Замечание}
+Из этого утверждения не следует, что если $aH = bH$, то $Ha = Hb$. Контрпример: $G = S_3 = \{e, (1 2), (1 3), (2 3), (1 2 3), (1 3 2)\}, \  H = \langle (1 2) \rangle$. Тогда $(1 3)H = (1 2 3)H$, так как $(1 3)H = \{(1 3), (1 2 3)\} \  (1 2 3)H = (1 3)H$, так как $(1 2 3) \in (1 3)H$ (первое свойство левых смежных классов).
+Однако $H(1 3) \neq H(1 2 3)$, так как $H(1 3) = \{(1 3), (1 3 2)\}$, $H(1 2 3) = \{(1 2 3), (2 3)\}$.
+
+\vspace{10pt}
+
+\textbf{Упражнение: } Доказать, что для конечной группы $G \  K \leq H \leq G$, то $|G:K| = |G:H||H:K|$
+
+\vspace{10pt}
+
+\underline{Опр.} Пусть $H \leq G$. $H$ "--- \textbf{нормальная группа (нормальный делитель, инвариантная подгруппа)}, если левостороннее разложение $G$ по $H$ совпадает с правосторонним: $\cup_{i \in I} x_iH = \cup_{j \in J} Hy_j$, то есть разбиения состоят из одних и тех же подмножеств.
+
+Условимся для нормальной подгруппы, говоря о смежных классах, опускать слова "левый" и "правый".
+
+\underline{Обозначение} $H \triangleleft G$
+
+\vspace{10pt}
+
+\textbf{Теорема (критерий нормальности)}
+Пусть $H \leq G$. Тогда $H \triangleleft G \Leftrightarrow \forall x \in G \  xH = Hx \Leftrightarrow x^{-1}Hx = H \Leftrightarrow xHx^{-1} = H$
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Необходимость. $\forall x \in G \  \exists i \in I \  x \in x_iH; \  \exists j \in J \  x \in Hy_j$. В силу нормальности $H$, класс $Hy_j$ является так же некоторым левым классом смежности. Так как $Hy_j \cap x_iH \neq \varnothing$, то по свойствам смежных классов они совпадают. Так как смежный класс порождается любым своим элементом: $xH = x_iH, \  Hx = Hy_j$. Значит, $xH = Hx$.
+	\item Достаточность. $\forall x \in G \  xH = Hx$, значит левостороннее и правостороннее разложения совпадают, и группа является нормальной.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Следствие.} Во всякой абелевой группе всякая подгруппа является нормальной.
+
+\vspace{10pt}
+
+\textbf{Следствие.} Если $|G:H| = 2$, то $H \triangleleft G$
+
+\textbf{Доказательство}
+Левостороннее разложение состоит из двух классов: $eH = H$ и $G \setminus H$ (разность множеств).
+Правостороннее разложение (аналогично) : $He = H$ и $G \setminus H$.
+Очевидно, эти разложения совпадают.
+
+\vspace{10pt}
+
+\underline{Примеры (нормальных подгрупп):}
+\begin{enumerate}
+	\item $A_n \triangleleft S_n$, так как $|S_n:A_n| = \frac{|S_n|}{|A_n|} = 2$, так как есть поровну четных и нечетных подстановок.
+	\item $SL_n(F) \triangleleft GL_n(F)$
+	
+	\textbf{Доказательство}
+	Пусть $A \in SL_n(F), \  X \in GL_n(F). \  X^{-1}AX \in SL_n(F)$, так как $det(X^{-1}AX) = det(X^{-1})det(A)det(X) = det(A) = 1$. По критерию нормальности, $SL_n(F)$ "--- нормальная.
+	\item Пусть $\tau$ "--- транспозиция из $S_3$. Тогда $\langle \tau \rangle \  \cancel\triangleleft \  S_3$
+	
+	\textbf{Доказательство}
+	Транспозиции не коммутируют: $(a b)(b c) = (a b c) \neq (a c b) = (b c)(a b)$. Пусть $\sigma \in S_3$ "--- произвольная транспозиция, тогда $\sigma*\langle \tau \rangle \neq \langle \tau \rangle*\sigma$.  По критерию нормальности $\langle \tau \rangle \ \cancel  \triangleleft \  S_3$, так как $\langle \tau \rangle = \{e, \tau \}$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Утв.}
+Если $H_1 \triangleleft G, \  H_2 \triangleleft G$, то $H_1 \cap H_2 \triangleleft G$
+
+\textbf{Доказательство}
+Очевидно, что $H_1 \cap H_2 \leq G$ (по критерию подгруппы). Пусть $h \in H_1 \cap H_2$ "--- произвольный. Проверим, что $x^{-1}hx \in H_1 \cap H_2$ . Если $H_1, H_2$ "--- нормальные, то $x^{-1}hx \in H_1$ и $x^{-1}hx \in H_2$. Значит, $x^{-1}hx \in H_1 \cap H_2$.
+
+\vspace{10pt}
+
+\textbf{Теорема (о произведении нормальной подгруппы на подгруппу)}
+Пусть $G$ "--- группа, $H \triangleleft G, K \leq G$, тогда $HK \leq G$. А если $K \triangleleft G$, то $HK \triangleleft G$.
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Замкнутость относительно умножения. $HKHK = (HH)(KK) = HK$ - замкнуто, так $KH = \cup_{k \in K} kH = \cup_{k \in K} Hk = HK$, так как $H$ "--- нормальная подгруппа.
+	\item Замкнутость относительно взятия обратного: $(HK)^{-1} = K^{-1}H^{-1} = KH = HK$, так как $K, H \leq G$
+	\item Пусть $K \triangleleft G$. $\forall x \in G \     x^{-1}HKx = x^{-1}Hxx^{-1}Kx = HK$, так как $H, K \triangleleft G$. Значит, $HK \triangleleft G$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Замечание:}
+Доказанная теорема верна и в случае умножения подгруппу на нормальную подгруппу.
+
+\section{Сопряжение в группе и его свойства}
+
+\underline{Опр.} Пусть $a, x \in G$, тогда $a^x = x^{-1}ax$ "--- \textbf{сопряженный} к $a$.
+
+\vspace{10pt}
+
+\textbf{Утв. (свойства операции сопряжения)}
+\begin{enumerate}
+	\item $a^{(xy)} = (a^x)^y$
+	\item $a^xb^x = (ab)^x$
+	\item Операции сопряжения и взятия обратного элемента коммутируют $(a^x)^{-1} = (a^{-1})^x$
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $a^{(xy)} = (xy)^{-1}a(xy) = y^{-1}x^{-1}axy = y^{-1}a^xy = (a^x)^y$
+	\item $a^xb^x = x^{-1}axx^{-1}bx = x^{-1}abx = (ab)^x$
+	\item $(a^{-1})^xa^x = (a^{-1}a)^x = e^x = e$. В силу единственности обратного элемента, $(a^{-1})^x = (a^x)^{-1}$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Замечание}
+Отношение сопряженности в группе "--- это отношение эквивалентности $a \sim b \Leftrightarrow \exists x \in G \  a = b^x$
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Рефлексивность: $a^e = a$
+	\item Симметричность: $a \sim b \Rightarrow \exists x \in G a = b^x$. Тогда $b = a^{x^{-1}}$ и $b \sim a$
+	\item Пусть $a \sim b, b \sim c \Rightarrow \exists x, y \in G \  a = b^x, \  b = c^y \Rightarrow a = c^{xy} \Rightarrow a \sim c$
+\end{enumerate}
+
+\vspace{10pt}
+
+По теореме о классах эквивалентности, группа $G$ разбивается в дизъюнктное объединение классов эквивалентности по отношению сопряженности.
+
+\vspace{10pt}
+
+\underline{Опр.} Полученные классы называются 
+\textbf{классами сопряженных элементов}.
+
+\underline{Опр.} $a^G = \{a^x \mid x \in G \}$ "--- класс сопряженных элементов, порожденный $a$
+
+\vspace{10pt}
+
+\textbf{Пример (описание классов сопряженных элементов в $S_n$)}
+\begin{enumerate}
+	\item Пусть $\sigma \in S_n$ и $\sigma = (a_1 ... a_k)(b_1 ... b_l) .... $ "--- произведение непересекающихся (независимых циклов)
+	Пусть $\rho \in S_n. \  \rho^{-1} \sigma \rho = \rho^{-1}(a_1 ... a_k)\rho\rho^{-1}(b_1 ... b_l)\rho .... \rho$	
+	Посмотрим, как действует сопряжение на цикл длины $k$.
+	
+	Покажем, что $\rho^{-1}(a_1 ... a_k)\rho = (\rho^{-1}(a_1) ... \rho^{-1}(a_k))$
+	
+	\textbf{Доказательство}
+	
+	Пусть $a_i \in \{1, ..., n\}$.
+	
+	$\rho^{-1}(a_1 ... a_k)\rho(\rho^{-1}(a_i)) = \rho^{-1}(a_1 ... a_k)(a_i) = \rho^{-1}(a_{i+1}) = (\rho^{-1}(a_1) ... \rho^{-1}(a_i))(\rho^{-1}(a_i))$, если $a_i$ присутствует в цикле. Иначе, если $a_i$ не лежит в цикле, то $\rho^{-1}(a_1 ... a_k)\rho(\rho^{-1}(a_i)) = \rho^{-1}(a_i) = (\rho^{-1}(a_1) ... \rho^{-1}(a_k))(\rho^{-1}(a_i))$
+	
+	То есть, сопряжение не изменяет тип цикла (количество элементов, которые цикл не переводит в самих себя). Если $a$ имеет некоторый циклический тип (это определяется типами циклов в разложении $a$), то $a^{S_n}$ состоит из всех подстановок такого циклического типа.
+	
+	\textbf{Замечание.}
+	Пусть $P(n)X$ "--- число классов сопряженных элементов. Тогда оно равно числу разбиений $n$ в сумму натуральных слагаемых (без учета порядка). Это верно, так как слагаемые в разбиении задают циклический тип (длины циклов в разбиении).
+\end{enumerate}
+
+\section{Гомоморфизм групп}
+
+Пусть $(G_1, *), (G_2, \circ)$ "--- группы.
+
+\underline{Опр.} $\phi : G_1 \rightarrow G_2$ "--- \textbf{гомоморфизм}, если $\phi(a*b) = \phi(a) \circ \phi(b)$
+
+\textbf{Утв.}
+\begin{enumerate}
+	\item При гомоморфизме $\phi(e_1) = e_2$, где $e_1, e_2$ "--- нейтральные элементы групп
+	\item $\phi$ коммутирует со взятием обратного элемента
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $\phi(e_1*e_1) = \phi(e_1) \circ \phi(e_1) = \phi(e_1)$. Умножим последнее равенство на $\phi(e_1)^{-1}$. Получаем $\phi(e_1) = e_2$
+	\item $\phi(a^{-1}) = \phi(a_1)^{-1}$, так как $\phi(a^{-1})*\phi(a) = \phi(a^{-1}a) = \phi(e_1) = e_2$. В силу единственности обратного элемента $\phi(a^{-1}) = \phi(a_1)^{-1}$
+\end{enumerate}
+
+\vspace{10pt}
+
+\underline{Опр.}
+\begin{enumerate}
+	\item $Ker(\phi) = \{a \in G_1 \mid \phi(a) = e_2 \}$
+	\item $Im(\phi) = \{\phi(a) \mid a \in G_1 \}$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Утв.}
+Пусть $G_1, G_2$ "--- мультипликативные группы (операция "--- произведение) и $\phi : G_1 \rightarrow G_2$ "--- гомоморфизм. Тогда:
+\begin{enumerate}
+	\item $Im(\phi) \leq G_2$
+	\item $Ker(\phi) \  \triangleleft \  G_1$
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Пусть $x, y \in Im(\phi) \Rightarrow \exists a, b \in G_1 \  \phi(a) = x, \  \phi(b) = y \Rightarrow xy = \phi(ab) \Rightarrow xy \in Im(\phi)$. Если $x \in Im(\phi) \Rightarrow \exists a \  \phi(a) = x \Rightarrow \phi(a^{-1}) = x^{-1} \Rightarrow x^{-1} \in Im(\phi)$
+	\item Пусть $a, b \in Ker(\phi) \Rightarrow \phi(a) = \phi(b) = e_2 \Rightarrow \phi(ab) = e_2 \Rightarrow ab \in Ker(\phi)$. Если $a \in Ker(\phi) \Rightarrow \phi(a) = e_2 \Rightarrow \phi(a^{-1}) = e_2^{-1} = e_2 \Rightarrow a^{-1} \in Ker(\phi)$
+	
+	Проверим, что $Ker(\phi) \  \triangleleft \  G_1$.
+	Пусть $x \in G_1, a \in Ker(\phi)$. Тогда $\phi(x^{-1}ax) = \phi(x^{-1})e_2\phi(x) = e_2 \Rightarrow x^{-1}ax \in Ker(\phi) \Rightarrow Ker(\phi) \  \triangleleft \  G_1$ 
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Замечание} Критерий нормальности можно сформулировать так: $H \  \triangleleft \  G \Leftrightarrow$ вместе с каждым элементом она содержит все его сопряженные: $\forall x \in G \  a \in H \Rightarrow a^x \in H$
+
+\vspace{10pt}
+
+\textbf{Следствие}
+Если $\phi: G_1 \rightarrow G_2$ "--- гомоморфизм и $H \leq G_1$, то $\phi(H) \leq G_2$
+
+\textbf{Доказательство}
+$\phi \! \restriction_H  : H \rightarrow G_2$ "--- гомоморфизм $\Rightarrow \phi(H) = Im(\phi \! \restriction_H) \leq G_2$
+
+\vspace{10pt}
+
+\textbf{Упражнение} Верно ли, что $H \  \triangleleft \  G_1$, то $\phi(H) \  \triangleleft \  G_2$?
+\end{document}

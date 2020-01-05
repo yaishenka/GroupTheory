@@ -1,0 +1,219 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 3}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-09-19}}
+
+\begin{document}
+\maketitle
+
+\section*{Теорема о гомоморфизмах и изоморфизмах}
+
+\textbf{Замечание}
+Если $\phi: G_1 \rightarrow G_2$ "--- гомоморфизм, то $Im(\phi) \leq G_2, \  Ker(\phi) \triangleleft G_1$
+
+\vspace{10pt}
+
+\underline{Опр.} Сюръективный гомоморфизм называется \textbf{эпиморфизмом}
+
+\vspace{10pt}
+
+\underline{Опр.} Инъективный гомоморфизм называется \textbf{мономорфизмом}
+
+\vspace{10pt}
+
+\underline{Опр.} Гомоморфизм $\phi: G \rightarrow G$ называется \textbf{эндоморфизм}
+
+\vspace{10pt}
+
+\textbf{Примеры: }
+\begin{enumerate}
+	\item $G \rightarrow \{e\} \subset G_2$ "--- тривиальный гомоморфизм
+	\item $\phi: Z \rightarrow Z_n$, $\phi(x)$ "--- класс вычетов по модулю $n$, которому принадлежит $x$
+	\item $GL_n(\mathbb{F}) \rightarrow \mathbb{F}^*,\  \phi(A) = det(A)$. Очевидно, $ker(\phi) = SL_n(\mathbb{F}) \triangleleft GL_n(F)$
+	\item $\epsilon: S_N \rightarrow \{ \pm 1\}$ "--- четность подстановки. $Ker(\phi) = A_n \triangleleft S_n$
+	\item $Aff(\mathbb{R}^2)$ "--- группа аффинных преобразований в плоскости. $\phi: \begin{pmatrix} x \\ y \end{pmatrix} \rightarrow A \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} \alpha \\ \beta\end{pmatrix}$. Групповая операция "--- композиция.
+	$T: Aff(\mathbb{R}^2) \rightarrow GL_n(\mathbb{R}), T(\phi)$ "--- матрица $A$ (матрица преобразования).
+
+\vspace{10pt}
+
+	\textbf{Упражнение.} Проверить, что это гомоморфизм.
+	
+	$Ker(T) = \{\phi \mid T(\phi) = E\}$ "--- группа параллельных переносов на плоскости (или группа сдвигов).
+
+\vspace{10pt}
+	
+	\textbf{Вывод:} Группа сдвигов "--- нормальная в группе афинных преобразований.
+\end{enumerate}
+
+\section{Определение факторгруппы}
+
+\textbf{Теорема}
+Пусть $H \triangleleft G$. Тогда множество смежных классов $G/H$ "--- группа относительно операции умножения подмножеств.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+\begin{enumerate}
+	\item Определенность операции. $(aH)(bH) = a(Hb)H = a(bH)H = (ab)H \in G/H$, так как $H \triangleleft G$
+	\item Ассоциативность. Мы показали, как умножаются смежные классы по $H$, порожденные элементами $G$. Тогда очевидно, что $((aH)(bH))(cH) = ((ab)H)(cH) = (ab)cH = a(bc)H = (aH)((bH)(cH))$
+	\item Нейтральный элемент "--- это $eH = H$, так как $(eH)(aH) = (aH)(eH) = (aH)$
+	\item Обратный элемент. $(aH)^{-1} = a^{-1}H$, так как $(a^{-1}H)(aH) = (a^{-1}a)H = H = (aH)(a^{-1}H)$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\underline{Опр.} Построеннная группа называется \textbf{факторгруппой} $G$ по $H$ и обозначается $G/H$.
+
+\vspace{10pt}
+
+\textbf{Утв.}
+Пусть $G$ "--- группа и $H \triangleleft G$
+Тогда $p: G \rightarrow G/H$, определяемое равенством $p(a) = aH$ является сюръективным гомоморфизмом $G$ на $G/H$ и $Ker(p) = H$.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+$\forall a, b \in G: \  p(a)p(b) = aHbH = abH = p(ab)$ "--- гомоморфизм. 
+
+$\forall aH \in G/H \  \exists a \in G \  p(a) = aH$ "--- сюръективность.
+
+$Ker(p) = \{a \in G \mid p(a) = H\} = \{a \in G \mid aH = H\} = H$.
+
+\vspace{10pt}
+
+\underline{Опр.} Построенный сюръективный гомоморфизм "--- \textbf{канонический эпиморфизм (каноническая сюръекция)} группы на факторгруппу
+
+\vspace{10pt}
+
+\textbf{Теорема (основная теорема о гомоморфизме)}
+
+Пусть $G, K$ "--- группы, $\phi: G \rightarrow K$ "--- гомоморфизм, $H = Ker(\phi) \triangleleft G$. Тогда $Im(\phi) \simeq G/H$, причем существует изоморфизм $\psi: Im(\phi) \rightarrow G/H$, при котором $\psi \circ \phi = p$ (канонический эпиморфизм, построенный выше).
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+\begin{enumerate}
+	\item Построение $\psi: Im(\phi) \rightarrow G/H$.
+	
+	Пусть $k \in Im(\phi)$. Тогда $\exists a \in G \  \phi(a) = k$. Определим $\psi(k) = \phi^{-1}(k) = \{a \in G \mid \phi(a) = k\}$ "--- полный прообраз.
+	Покажем, что $\phi^{-1}(k) = aH$.
+	
+	$\phi(aH) = \phi(a)\phi(H) = \phi(a)*e_2 = k \Rightarrow aH \subset \phi^{-1}(k)$.
+	
+	Обратно, пусть $b \in \phi^{-1}(k)$ "--- произвольный элемент. Тогда $\phi(b) = k$, но $\phi(a) = k$. Значит, $\phi(a^{-1}b) = e_2$ "--- нейтральный элемент $K \Rightarrow a^{-1}b \in H \Rightarrow b \in aH \Rightarrow \phi^{-1}(k) \in aH$
+	\item $\psi$ "--- гомоморфизм $Im(\phi)$ в $G/H$.
+	
+	Пусть $k_1, k_2 \in Im(\phi)$ и $\phi(a_1) = k_1, \phi(a_2) = k_2 \Rightarrow \psi(k_1) = a_1H, \psi(k_2) = a_2H$. Тогда $\phi(a_1a_2) = k_1k_2 \Rightarrow \psi(k_1k_2) = a_1a_2H = \psi(k_1)\psi(k_2)$.
+	\item $\psi$ "--- инъективно
+	
+	Пусть $k_1 \neq k_2$ и $\psi(k_1) = \psi(k_2)$. Тогда $\psi(k_1) = a_1H = a_2H = \psi(k_2)$, где $a_1, a_2$ "--- прообразы $k_1, k_2$. Значит, $\phi(a_1H) = \phi(a_2H) \Rightarrow \phi(a_1) = \phi(a_2) \Rightarrow k_1 = k_2$
+	\item $\psi$ "--- сюръективно.
+	
+	Пусть $aH \in G/H$. Тогда $\phi(a) = k \in Im(\phi) \Rightarrow \psi(k) = aH$
+	
+	Делаем вывод, что $\psi$ "--- изоморфизм.
+	\item Условие $\psi \circ \phi = p$
+	
+	Пусть $a \in G$. $\phi(a) = k \Rightarrow \psi(k) = \phi^{-1}(k) = aH$. Значит, $(\psi \circ \phi)(a) = \psi(k) = aH = p(a)$
+\end{enumerate}
+
+\vspace{10pt}
+
+Для запоминания теоремы полезно следующее четверостишье:
+
+Гомоморфный образ группы
+
+В честь победы коммунизма
+
+Изоморфен факторгруппе
+
+По ядру гомоморфизма
+
+\vspace{10pt}
+
+\textbf{Пример:}
+Построить факторгруппу $GL_n(\mathbb{R})/SL_n(\mathbb{R})$ и найти, какой известной группе она изоморфна. $H = SL_n(\mathbb{R}: AH = BH$, $A,B$ "--- матрицы $\Leftrightarrow A^{-1}B \in H \Leftrightarrow det(A) = det(B)$. Класс смежности состоит из матриц с одинаковым определителем и параметризуется ненулевым числом $d$.
+
+Пусть $\phi: GL_n(\mathbb{R}) \rightarrow \mathbb{R}^*, \  \phi(A) = det(A)$, причем $\phi$ сюръективен, так т.к. $\forall d \in \mathbb{R}^* \exists A \in GL_n(\mathbb{R}), \  det(A) = d$
+
+По основной теореме о гомоморфизме $Ker(\phi) = SL_n(\mathbb{R})$ и $GL_n(\mathbb{R})/SL_n(\mathbb{R}) \simeq Im(\phi) = \mathbb{R}$.
+
+\vspace{10pt}
+
+\textbf{Теорема (первая теорема об изоморфизме)}
+
+Пусть $G$ "--- группа, $H \triangleleft G, K \leq G$. Тогда:
+
+\begin{enumerate}
+	\item $HK = KH \leq G$
+	\item $(H \cap K) \triangleleft K$
+	\item $HK/H \simeq K/(H \cap K)$
+\end{enumerate} 
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+\begin{enumerate}
+	\item Было доказано
+	\item Очевидно, что $(H \cap K) \leq K$. Пусть $a \in H \cap K, x \in K$. Проверим, что $a^x = x^{-1}ax \in H \cap K$. Поскольку $H$ "--- нормальная, то $a^x \in H$. Поскольку $x \in K$, то $x^{-1} \in K$ и $a^x \in K$. Значит, $a^x = x^{-1}ax \in H \cap K \Rightarrow H \cap K \triangleleft K$ 
+	\item Рассмотрим $\phi: HK \rightarrow HK/H$ (очевидно, $H \triangleleft HK$, т.к. $H \triangleleft G$)
+	
+	$\phi(HK) = \phi(H)\phi(K) = e\phi(K) = \phi(K) \Rightarrow \phi\!\restriction_K : K \rightarrow HK/H$ "--- сюръективно.
+	
+	$Ker(\phi\!\restriction_K) = \{ a \in K \mid aH = H\} = \{a \in K\ \mid a \in H\} = H \cap K$
+	
+	По основной теореме о гомоморфизме:
+	
+	$Im(\phi) = HK/H \simeq K/(k \cap H) = K/Ker(\phi)$
+\end{enumerate} 
+
+\vspace{10pt}
+
+\textbf{Теорема (вторая теорема об изоморфизме; теорема о соответствии)}
+
+Пусть $Sub(G)$ "--- множество подгрупп $G$. $Inter(H, G)$ "--- множество подгрупп, занимающих промежуточное положение между $H$ и $G$. $Inter(H, G) = \{ K \leq G \mid H \leq K \leq G\}$. Пусть $H \triangleleft \ G$ и $H \leq K \leq G$. Тогда
+\begin{enumerate}
+	\item $K/H \leq G/H$
+	\item Отображение $\phi: Inter(H, G) \rightarrow Sub(G/H) \  \phi(K) = K/H$ "--- осуществляет взаимнооднозначное соответствие между $Inter(H, G)$ и $Sub(G / H)$, причем $\phi$ сохраняет включение (но не обязательно является гомоморфизмом)
+	\item Отображение $\phi$ сохраняет отношение нормальности: $K \triangleleft G \Leftrightarrow (K/H) \triangleleft (G/H)$
+	Причем, если верно одно из этих эквивалентных условий, то имеет место изоморфизм $G/K \simeq (G/H)/(K/H)$
+\end{enumerate}
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $\forall k_1, k_2 \in K \  k_1H*k_2H = k_1k_2H \in K/H$ "--- замкнуто относительно композиции
+	
+	$\forall k \in K \  (kH)^{-1} = k^{-1}H \in K/H$ "--- замкнуто относительно взятия обратного
+	
+	\item $K_1 \leq K_2 \Leftrightarrow K_1/H \leq K_2/H$ "--- сохраняет включение (доказывается аналогично пункту 1)
+	Проверим, что $\phi(K_1) = \phi(K_2) \Leftrightarrow K_1 = K_2$. Пусть $\phi(K_1) = \phi(K_2)$. Тогда, поскольку $\phi$ сохраняет включение, верно $K_1 \leq K_2$ и $K_2 \leq K_1$, значит $K_2 = K_1$ "--- инъективность.
+	
+	Проверим сюръективность. Пусть $S \leq G/H, p: G \rightarrow G/H$ "--- канонический эпиморфизм. Тогда $p^{-1}(S)$ "--- искомый прообраз $S$ при отображении $\phi$. Проверим, что $p^{-1}(S)$ "--- подгруппа.
+	
+	$\forall a, b \in p^{-1}(S) \Rightarrow p(a), p(b) \in S \Rightarrow p(ab) \in S \Rightarrow ab \in p^{-1}(S)$.
+	
+	$\forall a \in p^{-1}(S) \Rightarrow p(a^{-1}) \in S \Rightarrow a^{-1} \in p^{-1}(S)$.
+	
+	$p^{-1}(eH) = H$ "--- $eH$ нейтральный в факторгруппе $G/H$. Поскольку $S \leq G / H$, то $eH \in S$ и $H \leq p^{-1}(S) \Rightarrow H \leq p^{-1}(S) \leq G \Rightarrow p^{-1}(S) \in Inter(H, G)$
+	
+	Причем, $\phi(p^{-1}(S)) = S$, так как $p^{-1}(S)$ "--- подгруппа элементов, которым сопоставляются смежные классы из $S$. Тогда, факторизуя $p^{-1}(S)$ по $H$ мы получаем $S$.
+	\item Последний пункт будет доказан на следующей лекции
+\end{enumerate}
+\end{document}

@@ -1,0 +1,184 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 7}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-10-17}}
+
+\begin{document}
+\maketitle
+
+\section{Полупрямое произведение групп}
+
+\textbf{Утв.}
+
+$A \rtimes B$ "--- группа.
+
+\textbf{Доказательство}
+
+Очевидно, что $A \rtimes B$ замкнуто относительно произведения. Проверим ассоциативность: 
+
+$((a_1, \  b_1)(a_2, \  b_2))(a_3, \  b_3) = (a_1I_{b_1}(a_2),  \  b_1b_2)(a_3,  \  b_3) = (a_1I_{b_1}(a_2)I_{b_1b_2}(a_3), \  b_1b_2b_3)$
+
+$(a_1,  \  b_1)((a_2, \  b_2)(a_3, \  b_3)) = (a_1, \  b_1)(a_2I_{b_2}(a_3), \  b_2b_3) = (a_1I_{b_1}(a_2I_{b_2}(a3)), \  b_1b_2b_3)$
+
+Так как $I_{b_1}$ "--- гомоморфизм $\Rightarrow (I_{b_1}(a_2I_{b_2}(a_3)) = I_{b_1}(a_2)I_{b_1b_2}(a_3)$
+
+Ассоциативность доказана.
+
+Нейтральный элемент $(e, e) \in A \rtimes B$, так как $\forall b \in B \  I_b(e) = e$.
+
+Обратный элемент $(a, b)^{-1} = (I_{b^{-1}}(a^{-1}), b^{-1})$. Проверим это:
+
+$(I_{b^{-1}}(a^{-1}), b^{-1})(a, b) = (I_{b^{-1}}(a^{-1})I_{b^{-1}}(a), b^{-1}b) = (I_{b^{-1}}(e), e) = (e, e)$
+
+\vspace{10pt}
+
+\textbf{Теорема (о свойствах полупрямого произведения)}
+
+Пусть $A, B$ вложены в $A \rtimes B$ естественным образом: $A \simeq A \times e$, $B \simeq e \times B$
+
+Тогда:
+
+\begin{enumerate}
+	\item $A \triangleleft A \rtimes B$
+	\item $(A \rtimes B) / A \simeq B$
+	\item $A \rtimes B \simeq AB$, причем $A \cap B = \{e\}$
+\end{enumerate}
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+\begin{enumerate}
+	\item Пусть $(a, b) \in A \rtimes B$ и $(a', e) \in A$. Тогда $(a, b)^{-1}(a', e)(a, b) = (I_{b^{-1}}(a^{-1}), b^{-1})(a', e)(a, b) = (I_{b^{-1}}(a^{-1})I_{b^{-1}}(a'), b^{-1})(a, b) = (I_{b^{-1}}(a^{-1})I_{b^{-1}}(a')I_{b^{-1}}(a), e) \in A$
+	\item $\phi_i: A \rtimes B \rightarrow B, \  \phi(a, b) = b$
+	
+	$\phi((a_1, b_1)(a_2, b_2)) = b_1b_2 = \phi(a_1, b_1)\phi(a_2, b_2)$ "--- гомоморфизм. Очевидно, $\phi$ сюръективен.
+	
+	$Ker(\phi) = \{(a, b) \mid \phi(a, b) = e\} = A$. По теореме об гомоморфизме $Im(\phi) = B \simeq (A \rtimes B)/A$
+	
+	\item $(a, e)(e, b) = (aI_e(e), b) = (a, b)$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Теорема (о разложении группы в полупрямое произведение подгрупп)}
+
+Пусть $A, B$ "--- подгруппы в $G$ и
+\begin{enumerate}
+	\item $A \cap B = \{e\}$
+	\item $A \triangleleft G$
+	\item $AB = G$
+\end{enumerate}
+
+Тогда $G \simeq A \rtimes B$, где $I_b(a) = bab^{-1}$
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+Пусть $\phi: A \rtimes B \rightarrow G$, $\phi(a, b) = ab$. $\phi$ "--- гомоморфизм, так как $\phi(a_1, b_1)\phi(a_2, b_2) = a_1b_1a_2b_2 = a_1b_1a_2b_1^{-1}b_1b_2 = \phi((a_1, b_1)(a_2, b_2))$. $I_{b_1}(a_2) \in A$ так как $A$ "--- нормальная.
+
+$\phi$ сюръективен, так как $\forall x \in G \  \exists a \in A, \  b \in B$, что $x = ab = \phi(a, b)$. $Ker(\phi) = \{e\}$, так как $A \cap B = \{e\}$.
+
+Значит, $G \simeq A \rtimes B$.
+
+\vspace{10pt}
+
+\textbf{Примеры:}
+\begin{enumerate}
+	\item $S_n = A_n \rtimes \langle (1 2) \rangle$
+	
+	\textbf{Доказательство}
+	
+	$G = S_n$, $A_n \triangleleft G$, так как $|S_n:A_n| = 2$. $A_n*\langle (1 2) \langle = A_n*\{e, (1 2)\}$ "--- это объединение всех четных и всех нечетных подстановок, так как их поровну. Значит, $S_n = A_n \rtimes \langle (1 2) \rangle$
+	
+	\item $S_n = V_4 \rtimes S_3$, где $V_4 = \{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}$ "--- четверная группа Клейна. $V_4 \triangleleft S_4$ так как $V_4$ представляет собой дизъюнктное объединение классов сопряженных элементов.
+	$V_4 \cap S_3 = \{e\}$, $|V_4| = 4$, $|S_3| = 6$. Проверим, что все произведения элементов этих групп различны. Пусть $a_1, a_2 \in V_4, b_1, b_2 \in S_3$ и $a_1b_1 = a_2b_2$. Значит $b_1b_2^{-1} = a_1^{-1}a_2 \in V_4 \cap S_3 = \{e\}$ и $a_1 = a_2, \  b_1 = b_2$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Упражнение.} Придумать группу $G$, что $G = H \triangleleft S_4$, где $|H| = 8, \  H$ "--- обобщение группы Клейна.
+
+\section{Коммутант. Основная теорема о коммутанте}
+
+\underline{Опр.} Пусть $G$ "--- мультипликативная группа. Тогда $\forall a, b \in G$ формальное произведение $[a, b] = aba^{-1}b^{-1}$ "--- \textbf{коммутатор} элементов $a, b$.
+
+\vspace{5pt}
+
+\textbf{Утв. (о свойствах коммутатора)}
+\begin{enumerate}
+	\item $xy = [x, y]yx$
+	\item $xy = yx \Leftrightarrow [x, y] = e$
+	\item $[x, y]^{-1} = [y, x]$
+	\item $\forall a \in G \  [x^a, y^a] = [x, y]^a$
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Первое равенство означает, что коммутатор "--- это корректирующий множитель, необходимый для перестановки $xy$ на $yx$.
+	\item $xy = yx \Leftrightarrow xyx^{-1}y^{-1} = e$
+	\item $[x, y]^{-1} = yxy^{-1}x^{-1}$
+	\item $[x^a, y^a] = [a^{-1}xa, a^{-1}ya] = a^{-1}xaa^{-1}yaa^{-1}x^{-1}aa^{-1}y^{-1}a = [x, y]^a$
+\end{enumerate}
+
+\vspace{10pt} 
+
+\underline{Опр.} \textbf{Коммутант группы (производная подгруппа)} группы $G$ "--- это подгруппа $G' = \langle [x, y] \mid x, y \in G \rangle$
+
+\vspace{5pt} 
+
+\textbf{Замечание}
+$G' = \{[x_1, y_1]...[x_k, y_k] \mid x_i, y_i \in G, \ k \in N\}$
+
+\vspace{5pt} 
+
+\textbf{Утв.}
+
+Пусть $\phi: G \rightarrow H$ "--- гомоморфизм групп. Тогда $\phi(G') \leq H'$. Если $\phi$ сюръективен, то $\phi(G') = H'$
+
+\textbf{Доказательство}
+
+$\forall x, y \in G \  \phi([x, y]) = [\phi(x), \phi(y)]$, так как $\phi$ "--- гомоморфизм. Поскольку $\phi(x), \phi(y) \in H$, то и $\phi([x, y]) = [\phi(x), \phi(y)] \in H$, значит $\phi(G') \leq H'$, так как образ подгруппы "--- это всегда подгруппа.
+
+Пусть теперь $\phi$ сюръективен. Покажем, что $H' \leq \phi(G')$. Пусть $h_1, h_2 \in H$. Тогда $\exists x_1, x_2 \in G \  \phi(x_1) = h_1, \  \phi(x_2) = h_2$. Значит, $[h_1, h_2] = [\phi(x_1), \phi(x_1)] = \phi([x_1, x_2])$ и $H' \leq \phi(G')$.
+
+\vspace{10pt}
+
+\textbf{Следствие}
+
+Если $\phi$ "--- гомоморфизм $G$ в абелеву группу $H$, то $\phi(G') = \{e\}$.
+
+\textbf{Доказательство}
+
+$\phi(G') \leq H' = \{e\}$
+
+\vspace{5pt}
+
+\textbf{Следствие}
+
+Если $K \triangleleft G$, то $K' \triangleleft G$
+
+\textbf{Доказательство}
+
+$\phi: K \rightarrow G$, $\phi(k) = k^x$ для некоторого фиксированного $x \in G$ "--- гомоморфизм (внутренний автоморфизм).
+
+$\phi: K \rightarrow K$ сюръективен, так как $K \triangleleft G$. Значит, $\phi(K') = K' \Rightarrow \forall a \in K', \  \forall x \in G \  a^x \in K' \Rightarrow K' \triangleleft G$.
+
+\vspace{5pt}
+
+\textbf{Следствие}
+
+$\forall G$ (группа) верно $G' \triangleleft G$ (в предыдущем утв. положим $K = G$).
+\end{document}

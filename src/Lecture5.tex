@@ -1,0 +1,249 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 5}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-10-03}}
+
+\begin{document}
+\maketitle
+
+\section{Классические действия групп на множествах}
+
+Следствия утв. $Shift(\omega, \omega') = St(\omega')s = sSt(\omega)$, $s \in Shift(\omega, \omega')$ "--- произвольный элемент.
+
+\vspace{10pt}
+
+\textbf{Следствие.}
+
+Если $\omega, \omega'$ "--- элементы одной орбиты, то $St(\omega)$ и $St(\omega')$ сопряжены.
+
+\vspace{5pt}
+
+
+\textbf{Доказательство}
+
+$\exists s: \  s(\omega) = \omega'$ и $st(\omega') = sSt(\omega)s^{-1}$ ч.т.д.
+
+\vspace{10pt}
+
+\textbf{Следствие.}
+
+Пусть $G(\omega)$ "--- орбита элемента $\omega$.
+
+$|G(\omega)| = |G:St(\omega)| = \frac{|G|}{|St(\omega)|}$. Последнее равенство верно при условии, что $G$ "--- конечно.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+Фиксируем $\omega \in \Omega$.
+
+Тогда, $aSt(\omega) \rightarrow a(\omega) \in G(\omega)$ "--- биекция, так как $aSt(\omega) = bSt(\omega) \Leftrightarrow a^{-1}b \in St(\omega) \Leftrightarrow a^{-1}b(\omega) = \omega \Leftrightarrow a(\omega) = b(\omega)$.
+
+Значит, число левых смежных классов равно $|G(\omega)|$. 
+
+\vspace{5pt}
+
+Два левых смежных класса по стабилизатору $\omega$ совпадают тогда, и только тогда, когда соответствующие им элементы $\Omega$ равны ($a(\omega) = b(\omega)$).
+
+\vspace{5pt}
+
+\textbf{Упражнение.} Проверить, что мощность орбиты не зависит от выбора представителя.
+
+\section{Формула орбит}
+
+Пусть $|\Omega| < \inf$
+
+Пусть $\Omega = \Omega_1 \cup \Omega_2 \cup ... \cup \Omega_s$ "--- разбиение на попарно различные классы (орбиты).
+
+В каждой орбите выберем по представителю $a_i \in \Omega_i$.
+
+$|\Omega| = \sum \limits_{i = 1}^{s} |\Omega_i| = \sum \limits_{i = 1}^{s} |G:St(a_i)|$
+
+\textbf{Классические действия}
+\begin{enumerate}
+	\item Действие $G$ на себя левыми сдвигами. $\Omega = G$, $I_a(x) = ax$ "--- левый сдвиг.
+	
+	$I_a$ "--- действие, так как $I_{ab} = I_a(I_b(x)) = abx$.
+	
+	$KerI = \{a \in G \mid ax = x\} = \{e\} \Rightarrow I$ "--- точное (эффективное).
+	
+	$I$ "--- свободное, так как $\forall a \neq e \   a\omega = \omega$ "--- не выполнено $\forall \omega \in G$.
+	
+	Пусть не так, значит $a\omega = \omega$. Умножим на $\omega^{-1} \Rightarrow a = e$. Противоречие.
+	
+	$ImI \sim G/KerI = G \Rightarrow G \leq S(G)$.
+	
+	Если $|G| = n$, $S(G) \sim S_n$.
+	
+	\underline{Вывод.} Конечная группа $G \sim G' \leq S_n$ "--- теорема Кэли.
+	
+	\item Действие $G$ на себя сопряжением.
+	
+	$I_a: G \rightarrow S(G), \  I_a(x) = axa^{-1} = x^{a^{-1}}$. Это действие, так как $I_{ab}(x) = abx(ab)^{-1} = abxb^{-1}a^{-1} = I_a(I_b(x))$.
+	
+	$G(x) = \{I_a(x) \mid a \in G\} = {axa^{-1} \mid G} = x^G$ "--- класс сопряженных элементов, порожденный $G$.
+	
+	$St(x) = \{a \in G \mid axa^{-1} = x\} = \{a \in G\mid ax = xa\} = C_G(x)$ "--- централизатор элемента $x \in G$.
+\end{enumerate}
+
+\underline{Опр.} \textbf{Централизатор элемента $x$} "--- стационарная подгруппа $x$ при действии сопряжением.
+
+$|G(x)| = |G:St(x)| \Rightarrow |x^G| = |G:C_G(x)|$ "--- мощность класса сопряженных элементов равна индексу централизатора любого элемента этого класса.
+
+$KerI = \{a \in G \mid axa^{-1} = x \  \forall x \in G\} = \{a \in G \mid ax = xa \  \forall x \in G\}$.
+
+$Z(G) = \{a \in G \mid ax = xa \  \forall x \in G\}$. Тогда $Z(G) \triangleleft G$
+
+\vspace{5pt}
+
+\textbf{Утв.} $C_G(x)$ "--- наибольшая подгруппа $H$ в $G$, что $x \in Z(H)$
+
+$I$ "--- точное $\Leftrightarrow G$ имеет тривиальный центр.
+
+$I$ никогда не бывает свободна, так как $\forall a \in G \  I_a(e) = e$
+
+\vspace{10pt}
+
+\textbf{Утв.} Если $G$ "--- конечно, то $\frac{G}{ord(x)} \  \vdots \  |x^G|$
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+$|x^G| = |G:C_G(x)|$. $\langle x \rangle \leq G$ "--- конечно.
+
+$|\langle x \rangle| = ord(x)$, очевидно $\langle x \rangle \leq C_G(x) \Rightarrow |C_G(x)| \  \vdots \  ord(x) \Rightarrow C_G(x) = nord(x), \  n \in N$ "--- по теореме Лагранжа.
+
+$|x^G| = \frac{|G|}{nord(x)}$
+
+\section{Автоморфизм}
+
+\underline{Опр.} Всякий изоморфизм $\phi: G \rightarrow G$ называется \textbf{автоморфизм} группы $G$.
+
+Очевидно, что множество автоморфизмов группы "--- группа относительно композиции.
+
+$Aut(G)$ "--- группа автоморфизмов.
+
+$I_a(x) = axa^{-1}$ "--- автоморфизм.
+
+$I_a(xy) = I_a(x)I_a(y)$, так как $I_a(xy) = (xy)^{a^{-1}} = y^{a^{-1}}x^{a^{-1}} = I_a(x)I_a(y)$ 
+
+\vspace{5pt}
+
+\underline{Опр.} Множество всех автоморфизмов вида $I_a(x) = axa^{-1}$ "--- внутренние автоморфизмы.
+
+\vspace{5pt}
+
+Было проверено, что множество внутренних автоморфизмов образует группу относительно композиции.
+
+\vspace{10pt}
+
+\textbf{Утв.}
+$Inn(G) \sim G/Z(G)$
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+$Z(G) = KerI, \  ImI = \{I_a \mid I_a(x) = axa^{-1}\} =  Inn(G)$.
+
+$I: G \rightarrow S(G), \  I: G \rightarrow Inn(G), \  a \rightarrow Ia$. По основной теореме о гомоморфизме $Inn(G) \sim G/Z(G)$
+
+\vspace{5pt}
+
+\textbf{Замечание} Группы $Aut(G)$ и $Im(G)$ могут быть различны.
+
+\textbf{Пример.}
+
+Пусть $G$ "--- абелева. Тогда $I_a(x) = axa^{-1} = x$. Однако автоморфизм, сопоставляющий числу его обратное, не является внутренним.
+
+\vspace{5pt}
+
+\textbf{Замечание}
+
+В случае неабелевой группы $J_a(x) = x^a$ "--- не действие.
+
+\section{Формула классов}
+
+\textbf{Утв.}
+$|G| = |Z(G)| + \sum \limits_{i = 1}^r |G:C_G(a_i)|$, где $a_i$ "--- представитель тех классов сопряженных элементов, содержащих $> 1$ элемент.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+$x \in Z(G) \Rightarrow |x^G| = 1, \  x^G = \{axa^{-1} \mid a \in G\} = x$.
+
+Пусть $x \notin Z(G)$. Покажем, что $|x^G| > 1$.
+
+$\exists a \in G: ax \neq xa \Leftrightarrow axa^{-1} \neq x$ и $axa^{-1} \in x^G$.
+
+Пусть в $G$ имеется $r$ классов сопряженных, содержащих $> 1$ элемент.
+
+$|G| = |Z(G)| + \sum \limits_{i = 1}^r |G:C_G(a_i)|$. 
+
+\vspace{10pt}
+
+\underline{Опр.} Конечная группа $G$ "--- это \textbf{$p$-группа}, если $\exists k \in N, \  |G| = p^k, \  p$-простое.
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Всякая $p$-группа имеет нетривиальный центр $Z(G) \neq \{e\}$
+
+\vspace{5pt}
+
+\textbf{Доказательство.}
+\begin{enumerate}
+	\item $G = Z(G) \Rightarrow Z(G)$ "--- нетривиален.
+	\item $G \neq Z(G) \Rightarrow r \geq 1$ в формуле классов. Значит, $C_G(a_i) \leq G \Rightarrow |C_G(a_i)| = p^{l_i}, \  0 \leq l_i < n$ "--- мощность централизатора (теорема Лагранжа). Или, что эквивалентно, орбита элемента $a_i$ нетривиальна.
+	
+	$|Z(G)| = |G| - \sum \limits_{i=1}^r \frac{p^n}{p^{l_i}} = |G| - \sum \limits_{i=1}^r p^{n-l_i}$ "--- делится на $p$. Значит, $|Z(G)|$ делится на $p$.
+	
+	$|Z(G)| \neq 0$, так как $e \in Z(G)$.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Если $G$ "--- неабелева конечная группа, то $G/Z(G)$ не циклическая.
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+Пусть $Z = Z(G)$ и $G/Z = \langle aZ \rangle$, $aZ$ "--- порождающий элемент. Пусть $x, y \in G$ "--- произвольные. $x \in a^lZ, \  y \in a^kZ \Rightarrow \exists z_1 \in Z, \  z_2 \in Z$ и $xy = a^lz_1a^kz_2 = yx$ "--- противоречие.
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Если $|G| = p^2$, то $G$ "--- абелева
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+
+Если $G = Z(G) \Rightarrow G$ "--- абелева.
+
+Пусть $Z(G) \neq G \Rightarrow Z(G) \triangleleft G$, значит либо
+\begin{enumerate}
+	\item $|Z(G)| = p$
+	Тогда $|G/Z(G)| = p$ "--- циклическая $\Rightarrow G$ абелева (так как в противном случае $G/Z(G)$ не циклична)
+	
+	\item $|Z(G)| = p^2$. Тогда $G = Z(G)$
+\end{enumerate}
+\end{document}

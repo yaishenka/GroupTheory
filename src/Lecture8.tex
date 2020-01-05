@@ -1,0 +1,184 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 8}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-10-24}}
+
+\begin{document}
+\maketitle
+
+\section{Основная теорема о коммутанте}
+
+\underline{Опр.} \textbf{Взаимный коммутант} $[H, K] = \langle [h, k] \mid h \in H, k \in K \rangle$, $H,K \leq G$.
+
+\vspace{5pt}
+
+\textbf{Замечание.}
+Если $H, K \triangleleft G$, то $[H, K] \triangleleft G$.
+
+\textbf{Доказательство}
+
+$\forall h \in H, k \in K, g \in G \  g[h, k]g^{-1} = [ghg^{-1}, gkg^{-1}] \in [H, K]$ в силу нормальности $H$ и $K$.
+
+\vspace{10pt}
+
+\textbf{Утв. (критерий нормальности)}
+
+$H \triangleleft G \Leftrightarrow [H, G] \subset H$
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item Пусть $H \triangleleft G$. Тогда $[h, x] = hxh^{-1}x^{-1} \in H$, так как $xh^{-1}x^{-1} \in H$. Значит, $[H, G] \subset H$
+	\item Пусть $[H, G] \in H$. Рассмотрим $a \in H, x \in G$. $a^x = x^{-1}ax = aa^{-1}x^{-1}ax = a[a^{-1}x^{-1}] \in H$. По критерию нормальности, $H \triangleleft G$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Теорема (основная теорема о коммутанте)}
+
+Пусть $G$ "--- группа, $G'$ "--- коммутант. Тогда:
+\begin{enumerate}
+	\item $G/G'$ "--- абелева
+	\item $H \triangleleft G, G/H$ "--- абелева $\Leftrightarrow G' \leq H \leq G$ 
+\end{enumerate}
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $G' \triangleleft \  G$ по следствию. Пусть $p: G \rightarrow G/G'$ "--- каноническая сюръекция. $\forall x, y \in G \  [p(x), p(y)] = p([x, y])$, так как $p$ "--- гомоморфизм. $[x, y] \in G' = Ker(p) \Rightarrow p([x, y]) = e \Rightarrow p(x)p(y) = p(y)p(x)$. По сюръективности: $\forall a, b \in G/G' \exists x, y \in G' \  p(x) = a, p(y) = b$ и $ab = ba$.
+	
+	\item Пусть $H \triangleleft G$ и $G/H$ абелева. $\forall x, y \in G$ верно $xHyH = yHxH \Leftrightarrow xyH = yxH \Leftrightarrow [x, y]H = H \Leftrightarrow [x,y] \in H$ и $G' \subset H$.
+	
+	Пусть $G' \leq H \leq G$.
+	
+	$[H, G] \subset G' \leq H \Rightarrow H \triangleleft G$
+	
+	$G' \leq H \Rightarrow \forall x, y \in G \  [x, y] \in H \Rightarrow [x, y]H = H \rightarrow xyH = yxH  \Rightarrow xHyH = yHxH$ и $G/H$ "--- абелева.
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Следствие}
+
+Коммутант "--- наименьшая нормальная подгруппа в $G$, что факторгруппа по ней абелева. Коммутант можно рассматривать как меру неабелевости. Чем больше в группе коммутаторов, отличных от $e$, тем больше она отлична от абелевой.
+
+\section{Нормальная подгруппа, порожденная множеством}
+
+\textbf{Напоминание.} Если $M \subset G$, то $\langle M \rangle = \cap_{H \leq G, M \subset H} H$
+
+\vspace{5pt}
+
+\underline{Опр.} \textbf{Нормальная подгруппа, порожденная множеством $M$} "--- это группа $\langle M \rangle_{n} = \cap_{H \triangleleft G, M \subset H} H$
+
+\vspace{5pt}
+
+\textbf{Замечание.}
+$M \subset \langle M \rangle_n \triangleleft G$
+
+\textbf{Теорема (об описании нормальной подгруппы, порожденной множеством)}
+
+$\langle M \rangle_n = \langle m^x \mid m \in M, x \in G \rangle$
+
+\textbf{Доказательство}
+
+Обозначим $\langle M^G \rangle = \langle m^x \mid m \in M, x \in G \rangle$.
+
+Покажем, что $\langle M^G \rangle \subset \langle M \rangle_n$.
+
+$\forall m \in M \  m \in \langle M \rangle_n \Leftrightarrow \forall x \in G m^x \in \langle M \rangle_n$. Значит, $\langle M^G \rangle \subset \langle M \rangle_n$.
+
+Проверим, что $\langle M^G \rangle \triangleleft G$. Пусть $x \in G$. $\langle M^G \rangle^x = \langle m^{yx} \mid m \in M, y \in G \rangle \subset \langle M^G \rangle \Rightarrow \langle M^G \rangle \triangleleft G \Rightarrow \langle M^G \rangle = \langle M \rangle_n$
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Пусть $G = \langle M \rangle$. Тогда $G' = \langle [m_1, m_2] \mid m_1, m_2 \in M \rangle_n$
+
+\textbf{Доказательство}
+
+Обозначим $H = \langle [m_1, m_2] \mid m_1, m_2 \in M \rangle_n \subset G'$.
+
+$\forall m_1, m_2 \in M \  [m_1, m_2]^x \in G'$, так как $[m_1, m_2] \in G' \triangleleft G$. Значит, $H \leq G'$ (по предыдущей теореме).
+
+Пусть $p: G \rightarrow G/H$ "--- каноническая сюръекция. $G/H = \langle p(M) \rangle$. $\forall m_1, m_2 \in M \  [p(m_1), p(m_2)] = p([m_1, m_2]) = e$, так как $[m_1, m_2] \in H = Ker(p)$. Значит, $G/H$ порождена взаимно коммутирующими элементами и $G/H$ абелева. По основной теореме о коммутанте $G' \leq H$.
+
+\vspace{5pt}
+
+\textbf{Пример.}
+
+$S_n' = A_n$
+
+\textbf{Доказательство}
+
+$S_n = \langle (i, j) \mid 1 \leq i < j \leq n \rangle$.
+
+Значит, $S_n' = \langle [(i, j), (k, l)] \mid 1 \leq i < j \leq n, 1 \leq k < l \leq n \rangle_n$. Если $i, j, k, l$ не содержат общих элементов, то $[(i, j), (k, l)] = e$. Так же, $[(i, j),(i, k)] = (i, j)(i, k)(i, j)(i, k) = (i, j, k)$
+
+$S'_n = \langle (i, j, k) \rangle_n = \langle (i, j, k) \rangle$, так как сопряженный к циклу длины 3 "--- это цикл длины 3. Любую четную подстановку можно разложить в четное число транспозиций и $(i, j)(k, l) = (i, j, k)(j, k, l)$, если транспозиции не пересекаются. Значит, $A_n = \langle (i, j, k) \rangle = A_n$.
+
+\section{Разрешимые и нильпотентные подгруппы}
+Обозначим $G^{(0)} = G, G^{(1)} = G' = [G, G], ... , G^{(k)} = [G^{(k-1)}, G^{(k-1)}]$.
+
+\textbf{Замечание.}
+
+$\forall n \  G^{(n)} \triangleleft G$
+
+\textbf{Доказательство}
+$G' \triangleleft G$ "--- доказано.
+Пусть $G^{(n-1)} \triangleleft G$. Тогда $G^{(n)} = [G^{(n-1)}, G^{(n-1)}] \triangleleft G$.
+
+\vspace{10pt}
+
+\underline{Опр.} $G = G^{(0)} \triangleright G^{(1)}\triangleright G^{(2)} ... $ "--- \textbf{производный ряд} группы $G$.
+
+\underline{Опр.} Группа $G$ \textbf{разрешима}, если $\exists n \in N \  G^{(n)} = \{e\}$, то есть ряд обрывается на единичной подгруппе.
+
+\underline{Опр.} $G_0 = G, G_1 = G' = [G, G_0], ... , G_k = [G, G_{k-1}], ... $.
+
+$G_0 \triangleright G_1 \triangleright G_2 \triangleright ... $ "--- \textbf{нижний центральный ряд}.
+
+
+\underline{Опр.} Группа $G$ \textbf{нильпотентна}, если $\exists n \in N \  G_n = \{e\}$, то есть нижний центральный ряд обрывается на единичной подгруппе.
+
+\vspace{10pt}
+
+\underline{Опр.} Наименьшее $n$ в определениях "--- ступень разрешимости (нильпотентности).
+
+\vspace{5pt}
+
+\textbf{Утв.}
+
+Всякая нильпотентная группа разрешима.
+
+\textbf{Доказательство}
+
+Покажем, что $\forall n \in N \  G^{(n)} \subset G_n$.
+
+База индукции: $G_1 = G'$.
+
+Переход индукции: Если $G^{(n-1)} \subset G_{n-1}$, то $G^{(n)} = [G^{(n-1)}, G^{(n-1)}] \leq [G, G^{(n-1)}] \subset [G, G_{n-1}] = G_n$
+
+Если группа нильпотентна, то $G_n = \{e\}$ для некоторого $n$ и $G^{(n)} \leq \{e\}$. Значит, $G^{(n)} = \{e\}$.
+
+\vspace{10pt}
+
+\textbf{Примеры}
+\begin{enumerate}
+	\item Разрешимая группа ступени 0 "--- абелева.
+	
+	\underline{Опр.} Разрешимая группа степени 1 "--- \textbf{метабелева}.
+	
+	\item $D_n$ "--- метабелева. Напомним, что $D_n$ "--- это группа вращений правильного $n$-угольника (группа диэдра). $D_n = \langle S, R \rangle$, где $S$ "--- симметрия относительно оси, проходящей через центр многоугольника и некоторую его вершину, а $R$ "--- поворот на угол $\frac{2\pi}{n}$. Можно показать, что $SRS^{-1} = R^{n-1}$. Тогда $[S, R] \leq \langle R \rangle \Leftarrow D_n' \subset \langle R \rangle$ "--- абелева, так как $D_n'' = \{e\}$ 
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,29 @@
+language: python
+
+install:
+  - sudo apt-get install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra texlive-lang-cyrillic texlive-generic-extra
+  - git checkout $TRAVIS_BRANCH
+  - mkdir -p src
+  - mkdir -p compiled
+
+script:
+  - python3 script.py
+
+addons:
+  apt:
+    packages: texlive-latex-base 
+              texlive-fonts-recommended 
+              texlive-fonts-extra 
+              texlive-latex-extra 
+              texlive-lang-cyrillic
+              texlive-generic-extra
+
+
+after_success:
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git remote add origin-master https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} > /dev/null 2>&1
+  - git add -A
+  - git commit --message "Travis build - $TRAVIS_BUILD_NUMBER"
+  - git push origin-master
+  

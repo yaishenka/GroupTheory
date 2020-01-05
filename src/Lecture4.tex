@@ -1,0 +1,214 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 4}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-09-26}}
+
+\begin{document}
+\maketitle
+
+\textbf{Теорема (вторая теорема об изоморфизме; теорема о соответствии)}
+
+Пусть $Sub(G)$ "--- множество подгрупп $G$. $Inter(H, G)$ "--- множество подгрупп, занимающее промежуточное положение между $H$ и $G$. $Inter(H, G) = \{ K \leq G \mid H \leq K \leq G\}$. Пусть $H \triangleleft \ G$ и $H \leq K \leq G$. Тогда
+\begin{enumerate}
+	\item $K/H \leq G/H$
+	\item Отображение $\phi: Inter(H, G) \rightarrow Sub(G/H) \  \phi(K) = K/H$ "--- осуществляет взаимнооднозначное соответствие между $Inter(H, G)$ и $Sub(G/H)$, причем $\phi$ сохраняет включение (но не обязательно является гомоморфизмом)
+	\item Отображение $\phi$ сохраняет отношение нормальности: $K \triangleleft G \Leftrightarrow (K/H) \triangleleft (G/H)$
+	Причем, если верно одно из этих эквивалентных условий, то имеет место изоморфизм $G/K \simeq (G/H)/(K/H)$
+\end{enumerate}
+
+\vspace{5pt}
+
+\textbf{Доказательство(продолжение)}
+
+$(K/H) \triangleleft (G/H)$. Пусть $k \in K, \  x \in G$ "--- произвольные. Тогда $(kH)^{xH} \in K/H \Leftrightarrow (xH)^{-1}(kH)(xH) \in K/H \Leftrightarrow (x^{-1}H)(kH)(xH) \in K/H \Leftrightarrow (x^{-1}kxH \in K/H \Leftrightarrow k^xH \in K/H \Leftrightarrow k^x \in K$. Значит, $(K/H) \triangleleft (G/H) \Leftrightarrow K \triangleleft G$.
+
+Рассмотрим $p: G \rightarrow G/H$, $\psi : G/H \rightarrow (G/H)/(K/H)$ "--- канонические эпиморфизмы. Тогда $\psi \circ p: G \rightarrow (G/H)/(K/H)$ "--- сюръекция.
+
+$Ker(\psi \circ p) = (\psi \circ p)^{-1}(e) = (p^{-1} \circ \psi^{-1})(e) = p^{-1}(K/H)$, так как $\psi^{-1}(e) = Ker(\psi) = K/H$. $p^{-1}(K/H) = K$.
+
+По теореме о гомоморфизме:
+$G/K \simeq (G/H)/(K/H)$.
+
+\vspace{10pt}
+
+\textbf{Примеры: }
+\begin{enumerate}
+	\item Первая теорема об изоморфизме
+	
+	$G = S_4; \   H = \{\sigma \in S_4 \mid \sigma(4) = 4\} \simeq S_3$.
+	$V_4 = K = \{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\} \triangleleft S_4$ "--- четверная группа Клейна.
+	Так как $|K| = 4$, то $K$ абелева.
+	$K$ "--- нормальная, так как является дизъюнктным объединением классов сопряженных элементов $S_4$.
+	Очевидно, что $H \cap K = \{e\}$. Все произведения $hk$, где $h \in H, \  k \in K$ попарно различны. 
+	Докажем это. Пусть не так, значит $h_1k_1 = h_2k_2 \Rightarrow h_2^{-1}h_1 = k_2k_1^{-1}$. Очевидно, $h_2^{-1}h_1 \in H, \  k_2k_1^{-1} \in K$. Значит, $h_2^{-1}h_1 = k_2k_1^{-1} = e$, так как оба произведения лежат в $H \cap K = \{e\}$.
+	
+	Значит, всего таких произведений $|HK| = |H||K| = 24$ и $HK = S_4$. По первой теореме получаем: $S_4/V_4  = S_3/{e} = S_3$.
+	
+	\item Теорема о соответствии
+	
+	$G = (Z, +), \  H = nZ, \  G/H = Z_n$. Пусть $n$ делится на $k$. Рассмотрим подгруппу $kZ_n \leq Z_n$ "--- группа кратных $k$ вычетов.
+	
+	Вопрос: Какая подгруппа $K \in Inter(H, G)$ соответствует подгруппе $kZ_n$?
+	
+	У циклической группы всякая подргуппа и всякая факторгруппа является циклической.
+	
+	Используем теорему о соответствии: $G/K \simeq Z_n/kZ_n$, а $|kZ_n| = \frac{n}{k}$
+	
+	$|Z_n/kZ_n| = \frac{n}{(\frac{n}{k})} = k$, причем $G/K$ "--- циклична $\Rightarrow G/K \simeq Z_k$. Чтобы получить группу из $k$ элементов, нужно факторизовать по $K = kZ$.	 
+\end{enumerate}
+
+\vspace{10pt}
+
+\section{Действие группы на множество}
+
+Пусть $G$ "--- группа, $\Omega$ "--- непустое множество.
+
+\underline{Опр.} \textbf{Действие} $G$ на $\Omega$ "--- это отображение $G \bigtimes \Omega \rightarrow \Omega$, которое действует так: $(a, \omega) \rightarrow a\omega = a(\omega)$
+
+Причем отображение удовлетворяет аксиомам:
+\begin{enumerate}
+	\item Групповой операции соответствует композиция действий: $\forall a,b \in G \  (ab)\omega = a(b(\omega))$
+	\item $e \in G$ действует тождественным образом.
+\end{enumerate}
+
+\underline{Опр.} Пусть $G$ "--- группа и $\Omega$ "--- непустое множество, $S(\Omega)$ "--- группа биекций $\Omega$ на себя относительно композиции. \textbf{Действие} $G$ на $\Omega$ "--- произвольный гомоморфизм $I: G \rightarrow S(\Omega)$
+
+\vspace{10pt}
+
+\textbf{Теорема (эквивалентность определений)}
+Определения действия эквивалентны
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $1 \Rightarrow 2$
+	
+	Пусть $I_a(\omega) = a\omega$. Покажем, что $I_a$ "--- биекция. Для этого явно предъявим единственный обратный элемент: $(I_{a^{-1}} \circ I_a)(\omega) = I_{a^{-1}}(I_a(\omega)) = a^{-1}a\omega = e\omega = \omega$. Аналогично, $(I_a \circ I_{a^{-1}})(\omega) = \omega$.
+	
+	Проверим условие гомоморфизма: $I_{ab} = I_aI_b$, так как $I_{ab}(\omega) = ab\omega = I_a(I_b(\omega)) = (I_a \circ I_b)(\omega))$
+	
+	\item $2 \Rightarrow 1$
+	
+	Построим отображение, соответствующее первому определению. $(a, \omega) \rightarrow I_a(\omega)$. Причем $\forall \omega \in \Omega \  I_{ab}(\omega) = I_a(\omega)I_b(\omega), \  I_e(\omega) = \omega$ 
+\end{enumerate}
+
+\vspace{10pt}
+
+\underline{Опр.} Пусть $I \rightarrow S(\Omega)$ "--- действие. Тогда $I_a \in S(\Omega)$ "--- \textbf{действие элемента} $a$ на $\Omega$.
+
+\vspace{5pt}
+
+\underline{Опр.} \textbf{Ядро действия} $Ker(I) = \{a \in G \mid \forall \omega \in \Omega a(\omega) = \omega \}$. $Ker(I) \triangleleft G$ как ядро гомоморфизма.
+
+\vspace{5pt}
+
+\textbf{Замечание.} Всякая нормальная подгруппа является ядром канонического гомоморфизма $p: G \rightarrow G/H$
+
+\vspace{5pt}
+
+\underline{Опр.} Действие $I$ \textbf{эффективное(точное)}, если $Ker(I) = \{e\}$
+
+\vspace{5pt}
+
+
+\underline{Опр.} Действие $I$ "--- \textbf{свободное}, если $\forall a \neq e \in G$ и $\forall \omega \in \Omega \  a(\omega) \neq \omega$.
+
+\vspace{5pt}
+
+\underline{Замечание.} Если $I$ свободное, то $I$ эффективное. Обратное неверно
+
+\vspace{5pt}
+
+\textbf{Примеры:}
+\begin{enumerate}
+	\item Пусть $G = SO(2)$ "--- группа вращений плоскости. Тождественное преобразование $e \in SO(2)$ "--- нейтральный элемент, значит действие группы $G$ на точки плоскости эффективно. $A \in SO(2) \  \exists \omega = (0, 0)$, что $A(0, 0) = 0$, значит оно не свободно.
+
+	\item \underline{Опр.} Пусть $V$ "--- линейное пространство над $F$. \textbf{Линейное представление} группы $G$ в $V$ "--- произвольный гомоморфизм $T: G \rightarrow GL(V)$, где $GL(V)$ "--- группа невырожденных преобразований в $V$.
+
+Матричное представление: $T: G \rightarrow GL_n(F)$.
+
+Легко видеть, что матричное представление "--- частный случай действия.
+	
+	\item Пусть $G \subset GL_n(F)$.
+	
+	Стандартное представление $G$ в пространство $F^n$ "--- представление, задаваемое равенством $T(A)(x) = Ax$
+	\item Пусть $G = S_n, \  \Omega = \{1, 2, ..., n\}$. $I_{\sigma}(k) = \sigma(k)$ "--- действие группы $S_n$.
+	\item $G$ "--- группа, $\Omega = H \leq G$, $G/H$ "--- множество левых смежных классов, $I_a(gH) = agH \in G/H$.
+	
+	$I_{ab}(gH) = abgH = I_a(I_b(gH)) = (I_a \circ I_b)(gH)$.
+	
+	Этот пример универсальный, так как всякое действие есть действие над множеством левых смежных классов.
+\end{enumerate} 
+
+\vspace{10pt}
+
+\underline{Опр.} Пусть $I: G \rightarrow S(\Omega)$ "--- действие. \textbf{Орбита} элемента $\omega$ "--- множество $G(\omega) = \{a(\omega) \mid a \in G\}$
+
+\vspace{5pt}
+
+\textbf{Пример.}
+
+Если $G = SO(3)$ "--- группа вращений пространства, $\omega$ "--- точка в $R^3$, то $G(\omega)$ "--- сфера радиуса, равного расстоянию от $\omega$ до начала координат.
+
+\vspace{5pt}
+
+\underline{Опр.} $\omega_1 \sim \omega_2$, если $\omega_2 \in G(\omega_1)$
+
+\vspace{5pt}
+
+\textbf{Утв.}
+
+$\sim$ "--- отношение эквивалентности.
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $\omega \sim \omega$, так как  $e(\omega) = \omega$
+	\item $\omega_2 \sim \omega_1 \Rightarrow \omega_2 \in G(\omega_1) \Rightarrow \exists a \in G \  \omega_2 = a\omega_1 \Rightarrow \omega_1 = a^{-1}\omega_2 \Rightarrow \omega_1 \in G(\omega_2) \Rightarrow \omega_1 \sim \omega_2$
+	\item $\omega_1 \sim \omega_2, \   \omega_2 \sim \omega_3 \Rightarrow \exists a, b \in G:\  \omega_2 = a\omega_1, \   \omega_3 = b\omega_2 = ba\omega_1 \Rightarrow \omega_3 \in G(\omega_1) \Rightarrow \omega_1 \sim \omega_3$
+\end{enumerate}
+
+\vspace{5pt}
+
+\underline{Опр.} Классы эквивалентности "--- \textbf{орбиты} действия. Множество всех орбит обозначается $\Omega/G$
+
+\vspace{5pt}
+
+\underline{Опр.} \textbf{Стационарная подгруппа} $I: G \rightarrow S(\Omega)$. Пусть $\omega$ "--- фиксированная. $St(\omega) = \{a \in G \mid a\omega = \omega\}$ "--- \textbf{стационарная подгруппа (стабилизатор $\omega$)}.
+
+\vspace{5pt}
+
+\underline{Опр.} Пусть $\omega_2 \in G(\omega_1)$
+Множество $Shift(\omega_1, \omega_2) = \{a \in G \mid a(\omega_1) = \omega_2\}$ "--- все элементы, сдвигающие первую точку во вторую.
+
+\vspace{5pt}
+
+\textbf{Утв.}
+
+Пусть $\omega' \in G(\omega)$. Тогда $Shift(\omega, \omega') = St(\omega')s = sSt(\omega)$, где $s$ "--- произвольный элемент из $Shift(\omega, \omega')$.
+
+\textbf{Доказательство}
+\begin{enumerate}
+	\item $St(\omega')s \subset Shift(\omega, \omega')$ и $sSt(\omega) \subset Shift(\omega, \omega')$, так как $St(\omega')*s(\omega) = St(\omega')(\omega') = \omega'$ и $sSt(\omega)(\omega) = s(\omega) = \omega'$
+	
+	Проверим обратное, то есть что $Shift(\omega, \omega') \subset St(\omega')s \Leftrightarrow Shift(\omega, \omega')s^{-1} \subset St(\omega')$. 
+	Это верно, так как 	
+	$Shift(\omega, \omega')s^{-1}(\omega') = \omega'$
+	
+	Верно и то, что $Shift(\omega, \omega') \subset sSt(\omega) \Leftrightarrow s^{-1}Shift(\omega, \omega') \subset St(\omega)$, так как $s^{-1}Shift(\omega, \omega')(\omega) = \omega$
+\end{enumerate} 
+
+\vspace{5pt}
+
+\textbf{Следствие}
+Если $\omega \sim \omega'$, то $\forall s \in Shift(\omega, \omega') \   St(\omega') = sSt(\omega)s^{-1}$
+\end{document}

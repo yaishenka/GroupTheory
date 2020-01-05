@@ -1,0 +1,188 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{multirow}
+\usepackage{hhline}
+
+\usepackage[useregional]{datetime2}
+\usepackage[thinlines]{easytable}
+\usepackage{cancel}
+
+\title{Теория групп. Лекция 11}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-11-14}}
+
+\begin{document}
+\maketitle
+
+\section{Свободные группы}
+
+Известно, что циклическая группа $C_n = \{e, a, ..., a^{n-1}\}$ задается свойствами $a^n = e$ и $a^sa^t = a^{s + t}$ , если $s + t < n$ и $a^{s + t - n}$ иначе.
+
+Пусть $G = (Z, +)$. Тогда существует гомоморфизм $\phi: Z \rightarrow C_n$, $\phi(1) = a$ и $\phi(k) = a^k$.
+
+Тогда можно поставить следующую задачу: Построить семейство групп, что все конечные (и конечнопорожденные группы) являются гомоморфными образами этих групп (или их факторгруппами, что эквивалентно по теореме о гомоморфизме).
+
+\vspace{10pt}
+
+\underline{Опр.} Группа $F$ \textbf{свободная ранга $n$} со свободными порождающими $f_1, ..., f_n$ (ранг равен количеству порождающих), если верно:
+\begin{enumerate}
+	\item $F = \langle f_1, ..., f_n \rangle$
+	\item $\forall G$ "--- группа и $g_1, ..., g_n \in G \  \exists$ гомоморфизм $\phi: F \rightarrow G$, что $\phi(f_i) = g_i$. Это условие следует понимать так: $\exists$ изначальное отображение $\phi$ со свойствами $\phi(f_i) = g_i$, и его можно продолжить до гомоморфизма. 
+\end{enumerate} 
+
+\section{Конструкция свободных групп ранга $n$ с порождающими элементами}
+
+Пусть $f_1, ..., f_n$ заданы.
+
+\underline{Опр.} \textbf{Алфавит} "--- это множество $A = \{f_1, ..., f_n, f_1^{-1}, ..., f_n^{-1}\}$
+
+\underline{Опр.} \textbf{Слово} над алфавитом $A$ "--- это произвольное конечное выражение вида $f_{i_1}^{\epsilon_1}f_{i_2}^{\epsilon_2)}...f_{i_k}^{\epsilon_k}, \  \epsilon_i \in \{1, -1\}$
+
+\underline{Опр.} \textbf{Полугруппа} "--- множество с определенной ассоциативной бинарной алгебраической операцией
+
+\underline{Опр.} \textbf{Моноид} "--- полугруппа с нейтральным элементом.
+
+\vspace{10pt}
+
+На множестве слов над алфавитом $A$ введем операцию умножения "--- конкатенация с последующим сокращением рядом стоящих взаимнообратных элементов
+
+\underline{Опр.} Слово \textbf{полностью редуцированно}, если произведены все сокращения рядом стоящих обратных элементов.
+
+\textbf{Обозначение:} $F_n$ "--- множество всех полностью редуцированных слов над $A$ (пустое слово включено).
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+$F_n$ "--- свободная группа ранга $n$ с $n$ порождающими элементами.
+
+\textbf{Доказательство}
+
+Обратное слово к слову $f_{i_1}^{\epsilon_1}f_{i_2}^{\epsilon_2}...f_{i_k}^{\epsilon_k}$ "--- это $f_{i_k}^{-\epsilon_k}...f_{i_1}^{-\epsilon_1}$. Покажем ассоциативность $F_n$. 
+
+Пусть $|w|$ "--- количество букв в полностью редуцированной записи слова (длина слова).
+
+$a(bc) = (ab)c$. Проверим утверждение индукцией по длине $b$.
+
+База: $|b| = 0: \  ab = a, \  bc = b$ и $a(c) = (a)c$
+
+$|b| = 1 \Rightarrow b = f$ "--- буква. 
+
+Разберем случаи:
+\begin{enumerate}
+	\item $a = a'f^{-1}, \  c = f^{-1}c'$. Тогда $(ab)c = a'f^{-1}c' = a(bc)$
+	\item $a = a'f^{-1}, \  c \neq f^{-1}c'$. Тогда $(ab)c = a'c = a(bc)$
+	\item $a \neq a'f^{-1}, \  c = f^{-1}c'$. Тогда $(ab)c = ac' = a(bc)$
+	\item $a \neq a'f^{-1}, \  c \neq f^{-1}c'$. Тогда $(ab)c = a(bc)$, так как буква $f$ не сократится.
+\end{enumerate}
+
+Переход: Пусть для слов длины $\leq n - 1$ доказано и $|b| = n$, $b = fb'$ и $|b'| = n - 1$. Тогда $(ab)c = (a(fb'))c = ((af)b')c = (af)(b'c) = a(f(b'c)) = a((fb')c) = a(bc)$ так как ассоциативность верна для однобуквенных слов.
+
+\vspace{10pt}
+
+$F_n = \langle f_1, ..., f_n \rangle$.
+
+Пусть $G$ "--- группа и $g_1, ..., g_n \in G$. Зададим гомоморфизм $\phi$: $\phi(f_{i_1}^{\epsilon_1}...f_{i_k}^{\epsilon_k}) = g_{i_1}^{\epsilon_1}...g_{i_k}^{\epsilon_k}$. Пусть $w_1 = af_i^{\epsilon}f_i^{-\epsilon}b$, $w_2 = ab$. Покажем, что $\phi(w_1) = \phi(w_2)$: $\phi(w_1) = \phi(af_i^{\epsilon}f_i^{-\epsilon}b) = \phi(a)g_i^{\epsilon}g_i^{-\epsilon}\phi(b) = \phi(a)\phi(b) = \phi(ab) = \phi(w_2)$, и, следовательно, $\phi$ корректно определен.
+
+\vspace{10pt}
+
+\textbf{Пример}
+$F_1 \simeq (Z, +), \  f_1 = 1$. Существует гомоморфизм $\phi: F_1 \rightarrow Z_n$, $\phi(1) = \overline{1}, \  \phi(k) = \overline{k}$
+
+Пусть $G$ "--- произвольная группа и $g \in G$. Существует гомоморфизм $\phi: F_1 \rightarrow G$, что $\phi(1) = g$, $\phi(k) = g^k$.
+
+\section{Задание группы с помощью образующих и соотношений}
+
+Пусть $F_n$ "--- свободная группа ранга $n$ с порождающими $f_1, ..., f_n$, и $G = \langle g_1, ..., g_n \rangle$.
+
+Тогда $\exists$ гомоморфизм $\phi: F_n \rightarrow G$, $\phi(f_i) = g_i$. Причем $\phi$ сюрьективен, так как у каждого порождающего группу $G$ элемента $g_i$ есть прообраз $f_i$. Гомоморфизм с данными условиями определяется единственным образом.
+
+По основной теореме о гомоморфизме, $G \simeq F_n/ker(\phi)$
+
+\textbf{Вывод:} Любая конечнопорожденная группа изоморфна факторгруппе свободной группы ранга $n$.
+
+\vspace{10pt}
+
+\textbf{Теорема}
+
+Если $F_n$ и $G_n$ "--- свободные группы ранга $n$ с порождающими элементами $f_1, ..., f_n$ и $g_1, ...m g_n$ соответственно, то $F_n \simeq G_n$
+
+\textbf{Доказательство}
+
+По определению свободной группы, $\exists \phi: F_n \rightarrow G_n$ и $\psi: G_n \rightarrow F_n$ "--- гомоморфизмы, что $\phi(f_i) = g_i$ и $\phi(g_i) = f_i$. Тогда $\phi \circ \psi: G_n \rightarrow G_n$ "--- гомоморфизм и $\phi \circ \psi(g_i) = g_i \Rightarrow \phi \circ \psi$ "--- тождественное отображение, так как $g_i$ "--- порождающие элементы. Аналогично доказывается, что $\psi \circ \phi$ "--- тождественное отображение, а значит $\phi, \psi$ "--- взаимнообратные изоморфизмы групп.
+
+\vspace{10pt}
+
+\underline{Опр.} Пусть $S \subset F_n$ (свободная группа ранга $n$) и $K = \langle S \rangle_n$. Тогда группа $G = \langle g_1, ..., g_n \rangle$ "--- \textbf{группа с образующими $g_1, ..., g_n$ и соотношениями $S$}, если $\phi: F_n \rightarrow G$ "--- сюръективный гомоморфизм из определения свободной группы, причем $\phi(f_i) = g_i$ и $ker(\phi) = K$.
+
+\textbf{Обозначение}: $G = \langle g_1, ..., g_n \mid S$.
+
+\textbf{Замечание}: Принято в указании $S$ заменять вхождения $f_i$ на $g_i$.
+
+\textbf{Пример.}
+
+$Z \rightarrow C_n \simeq Z_n$ "--- гомоморфизм, значит $C_n = \langle a \mid a_n \rangle$, $\phi(k) = a^k$, $ker(\phi) = nZ$.
+
+\vspace{10pt}
+
+\textbf{Теорема (универсальное свойство группы, порожденной элементами и соотношениями)}
+
+Пусть $G = \langle g_1 ,..., g_n \mid S \rangle$, $H$ "--- группа с элементами $h_1, ..., h_n$, такая, что соотношения из $S$ тривиализуются на $H$, то есть $\forall w \in S \  \theta(w) = \theta(h_1...h_k) = e$, где $\theta: F_n \rightarrow H$ "--- гомоморфизм из определения свободной группы.
+
+Тогда $\exists$ гомоморфизм $\phi: G \rightarrow H$, что $\phi(g_i) = h_i \  \forall i ]in \{1, ..., n\}$.
+
+\textbf{Доказательство}
+
+Б.о.о. $H = \langle h_1, ..., h_n \rangle$, так как гомоморфизм можно расширить от $\langle h_1, ..., h_n \rangle$ до всего $H$.
+
+По определению свободной группы, $\exists$ сюръективный гомоморфизм $\psi$, что $\psi(f_i) = g_i$, $ker(\psi) = K = \langle S \rangle_n$. Так же $\exists$ гомоморфизм $\theta: F_n \rightarrow H$: $\theta(f_i) = h_i$, $ker(\theta) = L \triangleleft F_n$. По условию, $\forall w \in S, \  \theta(w) = e \Rightarrow w \in ker(\theta) = L \Rightarrow  K \subset L \Rightarrow K \triangleleft L \triangleleft F_n$.
+
+По теореме о соответствии, $H \simeq F_n/L \triangleleft F_n/K \simeq G \Rightarrow H \simeq (F_n/K)/(L/K) \simeq G/G_1$, где $G_1 = L/K$.
+
+В качестве $\phi$ можно взять канонический эпиморфизм $p: G \rightarrow G_1$.
+
+\vspace{10pt}
+
+\textbf{Примеры}
+\begin{enumerate}
+	\item Задание $V_4$ образующими и соотношениями. $G = \langle a, b \mid a^2, b^2, (ab)^2 \rangle$. Покажем, что $G \simeq Z_2 \times Z_2$.
+	
+	$ab = b^{-1}a^{-1} = ba$, так как $(ab) = e, \  a^2 = b^2 = e$, а значит $G$ абелева. $\forall x \in G \  x = a^ib^j$, $i, j \in \{0, 1\}$ и $|G| \leq 4$. Пусть $a' = (1, 0), \  b' = (0, 1) \in Z_2 \times Z_2$. Тогда $Z_2 \times Z_2 = \rangle a', b' \rangle$ и соотношения тривиализуются на $Z_2 \times Z_2$. По универсальному свойству, $\exists$ сюръективный гомоморфизм $\phi$. Тогда $Z_2 \times Z_2 \simeq \Im(\phi) \simeq G/ker(\phi) \Rightarrow |G| = |ker(\phi)||Z_2 \times Z_2| = 4|ker(\phi)|$. Так как $|G| \leq 4$, то $|ker(\phi)| = 1$ и $\phi$ инъективно. Причем, $V_4 = \{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\} \simeq Z_2 \times Z_2$, а значит мы задали $V_4$ образующими и соотношениями.
+	
+	\item Задание группы квантерионов образующими и соотношениями.
+	
+	$G = \langle a, b \mid a^4, a^2b^{-2}, bab^{-1}a\rangle$. Пусть $x \in G, \  x = a^{i_1}b^{j_1}a^{i_2}b^{j_2}...a^{i_k}b^{j_k}$. Заменим все вхождения $a^2$ на $b^2$, так как $a^2 = b^2$. Тогда все $j_s \in \{0, 1\}$. Используем то, что $ba = a^{-1}b = a^3b$: $x = a^ib^j$, $i \in \{0, 1, 2, 3\}, \  j \in \{0, 1\}$. Значит, $|G| \leq 8$. Пусть $H \leq GL_2(C)$, $H = \langle A, B \rangle$, где $A = \begin{pmatrix}
+i & 0 \\
+0 & -i
+\end{pmatrix}$, $B = \begin{pmatrix}
+0 & 1 \\
+-1 & 0
+\end{pmatrix}$.
+
+На $H$ соотношения из $S$ тривиализуются, так как $A^2 = B^S,\  A^4 = E$ и $BAB^{-1} = A^{-1}$. По универсальному свойству, $\exists$ гомоморфизм $\phi: G \rightarrow H \leq GL_2(C)$, причем $\phi$ сюръективно, так как $\phi(a) = A$ и $\phi(b) = B$. Значит, $|G|= 8$ (аналогично предыдущему пункту). Построенная подгруппа в $GL_2(C)$ называется группой квантерионов и состоит из $8$ элементов.
+
+\vspace{10pt}
+
+\textbf{Замечание}
+
+Если $G = \langle f_1, ..., f_n \mid S \rangle$, $H = \langle h_1, ..., h_n \mid S \rangle$.
+
+\textbf{Доказательство}
+
+Аналогично свободным группам
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Замечание}
+
+Задача об изоморфизме групп, заданных образующими и соотношениями алгоритмически неразрешима
+\end{document}

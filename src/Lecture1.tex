@@ -1,0 +1,257 @@
+\documentclass{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{mathtools,amssymb}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[useregional]{datetime2}
+
+\title{Теория групп. Лекция 1}
+\author{Штепин Вадим Владимирович}
+\date{\DTMdate{2019-09-05}}
+
+\begin{document}
+\maketitle
+\underline{Опр.} \textbf{Группа} "--- множество $G$ с определённой на нём операцией $*$, удовлетворяющей условиям:
+\begin{enumerate}
+	\item Ассоциативность: $(a*b)*c = a*(b*c)$
+	\item Существование нейтрального элемента: $\exists e \in G \ \forall a \in G \  a*e = e*a = a$
+	\item Существование обратного элемента: $\forall a \in G \ \exists a^{-1} \in G \ a*a^{-1} = a^{-1}*a = e$
+\end{enumerate}
+
+\vspace{10pt}
+
+\underline{Опр.} Если выполено свойство коммутативности ($\forall a, b \in G \  a*b = b*a$), то группа называется \textbf{абелевой}
+
+\vspace{10pt}
+
+\par \underline{Опр.} \textbf{Подгруппа} "--- непустое подмножество $H \subset G$, являющееся группой.
+
+\vspace{10pt}
+
+\textbf{Теорема (критерий подгруппы)}. Доказывалась на 1 курсе.
+
+\par Непустое подмножество $H \subset G$ это подгруппа в $G$, если верны следующие условия:
+\begin{enumerate}
+	\item $H$ замкнуто относительно групповой операции: $\forall a, b \in H \  a*b \in H$
+	\item $H$ замкнуто относительно взятия обратного элемента: $\forall a \in H \  a^{-1} \in H$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Примеры групп:}
+\begin{enumerate}
+	\item $(Z, +), (Z_n, +)$
+	\item Если $F$ "--- поле, то $(F, +)$ "--- аддитивная группа поля, $(F^*, *)$ "--- мультипликативная группа поля
+	\item Если $V$ "--- лин. пр-во, то $(V, +)$ "--- абелева группа
+	\item $GL_n(F)$ "--- полная линейная группа над полем $F$, т.е. группа невырожденных матриц относительно умножения
+	\item $S_n$ "--- симметрическая группа степени $n$, т.е. группа биекций множества $\{1,2, ... , n\}$ на себя относительно композиции.
+\end{enumerate}
+
+\vspace{10pt}
+
+\par \underline{Опр.} \textbf{Порядок группы} "--- число элементов в группе
+
+\vspace{10pt}
+
+\par \underline{Опр.} \textbf{Порядок элемента группы g} "--- наименьшее ненулевое число $n$, в что $g^n = e$
+
+
+\vspace{10pt}
+
+
+\textbf{Примеры подгрупп (знаком $\le$ обозначают отношение "быть подгруппой"):}
+\begin{enumerate}
+	\item $nZ \le Z$ "--- группа кратных $n$ чисел
+	\item Если $W, V$ "--- лин. пространства и $W \le V$ (подпространство), то верно что $W$ "--- подгруппа $V$  
+	\item $SL_n(F) \le GL_n(F), A \in SL_n(F) \leftrightarrow det(A) = 1$
+	\item $O_n \le GL_n(\mathbb{R})$ "--- группа ортогональных матриц, $U_n \le GL_n(\mathbb{C})$ - группа унитарных матриц
+	\item $A_n \le S_n$ "--- четные подстановки
+\end{enumerate}
+\section{Группа, порожденная подмножеством}
+
+\vspace{10pt}
+
+\par \underline{Опр.} Пусть $G$ - группа относительно умножения и $M \subset G$. Тогда $\langle M \rangle = \cap_{\small H \le G, M \subset H} \  H$ - подгруппа, \textbf{порожденная} $M$
+
+\vspace{10pt}
+
+\par \underline{Опр.} Подгруппа, \textbf{порожденная} $M$ "--- наименьшая по включению подгруппа $G$, содержащая $M$
+
+\vspace{10pt}
+
+\textbf{Утв.} $\langle M \rangle = \{m_1^{\epsilon_1}*m_2^{\epsilon_2}*...*m_s^{\epsilon_s} \  \mid m_i \in M, \  \epsilon_i \in \{0,1,-1\}\}$
+\section{Циклическая группа}
+
+\vspace{10pt}
+
+\par \underline{Опр.} Пусть $\exists a \in G, \  G = \langle a \rangle$, тогда $G$ "--- \textbf{циклическая группа} с порождающим элементом $a$.
+
+\vspace{10pt}
+
+\textbf{Теорема (об элементе конечного порядка)}
+Пусть $a \in G, \  ord(a) < \infty, \  ord(a) = n$. Тогда $\langle a \rangle$ - конечная группа порядка $n$ и $\langle a \rangle = \{e, a, ... , a^{n-1}\}$
+
+\vspace{10pt}
+
+\textbf{Теорема (об изоморфизме циклических групп)}
+Все циклические группы одного порядка (в том числе и бесконечные) изоморфны между собой
+
+\vspace{10pt}
+
+\textbf{Следствие}
+\begin{enumerate}
+	\item Если $|G| = n < \infty$ и $G$ "--- цикличная, то $G \simeq Z_n$
+	\item Если $|G| = \infty$ и $G$ "--- цикличная, то $G \simeq Z$
+
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Теорема}
+Всякая подгруппа циклической группы сама циклическая
+
+\vspace{10pt}
+
+\textbf{Теорема}
+Пусть $G$ "--- циклическая группа, порожденная $a$ и $Div(G)$ "--- множество делителей $n = ord(a)$, тогда $\forall d \in Div(G) \  \exists H_d \le G, \  H_d = \{e, a^d, a^{2d}, ... , a^{(\frac{n}{d} - 1)d}\}$ и
+\begin{enumerate}
+	\item $H_d$ - циклическая подгруппа порядка $\frac{n}{d}$
+	\item Если $d_1, d_2 \in Div(G) \ , d_1 \neq d_2,$ то $H_{d_1} \neq H_{d_2}$
+	\item Всякая подгруппа группы $G$ имеет вид $H_d$ для некоторого $d$
+\end{enumerate}
+
+\section{Произведение подмножеств в группе}
+
+\underline{Опр.} Если $A, B \subset G$, то $AB = \{ab \mid a \in A, \  b \in B\}$
+Если $A = {a}, \  B = H \leq G$, то $AB = aH = \{ah \mid h \in H\}$ "--- левый смежный класс $a$ по подгруппе $H$.
+$Ha = \{ha \mid h \in H\}$ "--- правый смежный класс.
+Причем верно $\forall A,B,C \subset G \  (AB)C = A(BC)$
+
+\vspace{10pt}
+
+\textbf{Теорема (критерий подгруппы, переформулировка)}
+Пусть $H \subset G$ и $H \neq \varnothing$. Тогда $H \leq G \Leftrightarrow$ 
+\begin{enumerate}
+	\item $HH = H$
+	\item $H^{-1} = H$, где $H^{-1} = \{a^{-1} \mid a \in H\}$
+\end{enumerate}
+
+\vspace{10pt}
+
+\textbf{Свойства левых смежных классов:}
+\begin{enumerate}
+	\item Всякий левый смежный класс порождается любым своим элементом $y \in xH, H \leq G \Rightarrow yH = xH$
+	
+	\textbf{Доказательство:}
+	$y \in xH, \  H \leq G \Rightarrow \exists h \in H:\  y = xh \Rightarrow yH = xhH = xH$, так как если $h \in H$, то $hH = H$
+	\item Всякие два левых смежных класса по подгруппе $H$ либо не пересекаются, либо совпадают
+	
+	\textbf{Доказательство:}
+	Пусть $xH \cap yH \neq \varnothing \Rightarrow \exists z \in xH \cap yH \Rightarrow zH = xH$ $zH = yH \Rightarrow xH = yH$
+	\item $G = \sqcup_{i \in I}x_iH$ "--- левостороннее разложение группы $G$ по подгруппе $H$ , где объединение дизъюнктное, то есть объединяются непересекающиеся множества
+	
+	\textbf{Доказательство}
+	Очевидно, что $G = \cup_{x \in G}xH$. Из каждого семейства совпадающих смежных классов оставим ровно по одному представителю. По предыдущему свойству они не пересекаются.
+\end{enumerate}
+
+\vspace{10pt}
+
+Аналогично доказывается существование правостороннего разложения $G = \sqcup_{i \in I}Hx$
+
+Наличие этих разложений "--- следствие того, что отношение ''x и y принадлежат одному левому(правому) смежному классу'' "--- это отношение эквивалентности на $G$, и верна теорема о классах эквивалентности
+
+\vspace{10pt}
+
+\textbf{Теорема (критерий принадлежности двух элементов одному левому смежному классу)}
+Элементы $x, y \in G$ принадлежат одному левому смежному классу по подгруппе $H$ тогда, и только тогда, когда верно одно из след. эквивалентных условий:
+\begin{enumerate}
+	\item $x^{-1}y \in H$
+	\item $y^{-1}x \in H$
+	\item $xH = yH$
+	\item $x \in yH$
+	\item $y \in xH$
+	\item $xH \cap yH \neq \varnothing$	
+\end{enumerate}
+\textbf{Доказательство.}
+Покажем эквивалентность с первым условием:
+\begin{enumerate}
+	\item Необходимость $x,y \in zH \Rightarrow \exists h_1, h_2 \in H \  x = zh_1, \  y = zh_2 \Rightarrow x^{-1}y = h_1^{-1}*z^{-1}*z*h_2 = h_1^{-1}*h_2 \in H$
+	\item Достаточность
+$x^{-1}y \in H \Rightarrow x^{-1}y = h \in H \Rightarrow y = xh \Rightarrow y \in xH \Rightarrow xH = yH$
+\end{enumerate}
+
+\textbf{Упражнение:} Доказать остальные эквивалентности и придумать аналогичный критерий для правых смежных классов
+
+\vspace{10pt}
+
+\textbf{Теорема(Лагранж)}
+Порядок любой подгруппы конечной группы является делителем порядка группы
+
+\textbf{Доказательство}
+$G = \sqcup_{i \in I} x_iH$ и $|xH| = |H|$ по свойствам группы. Значит, $|G| = |I| \ |H|$, так как объединение дизъюнктное. Тогда $ |G| \mathrel{\vdots}  |H|$
+
+\vspace{10pt}
+
+\underline{Опр.}
+
+$G/H$ "--- множество левых смежных классов в разложении
+
+$ |G/H|$ "--- индекс подгруппы
+
+$H \textbackslash G$ "--- множество правых смежных классов в разложении
+
+$ |G/H| =  |H \textbackslash G| = \frac{|G|}{|H|} = |G : H|$
+
+\vspace{10pt}
+
+\underline{Следствие}
+Порядок любого элемента конечной группы "--- делитель порядка группы
+
+\vspace{10pt}
+
+\underline{Следствие}
+Если $p$ "--- простое, то любая группа порядка $p$ "--- циклическая
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+Если $p$ "--- простое, то $p \geq 2$ и в группе есть элемент, отличный от нейстрального. Обозначим его $a \in G, \  a \neq e$. По теореме Лагранжа $ |G| \mathrel{\vdots}  | \langle a \rangle  |$. Так как $p$ простое, то $ | \langle a \rangle | = p$ и $\langle a \rangle = G$ 
+
+\vspace{10pt}
+
+\underline{Следствие}
+$\forall p$ "--- простое $\exists !$ с точностью до изоморфизма группа порядка $p$
+
+\vspace{5pt}
+
+\textbf{Доказательство}
+$|G| = p \Rightarrow G$ изоморфно $C_p$ "--- абстрактная циклическая группа порядка p
+
+\vspace{10pt}
+
+\underline{Следствие (теорема Эйлера)}
+Если $a \in Z,\  n \in N,\  gcd(a, n) = 1$, то $a^{\phi(n)} \equiv 1 \pmod n$, где $\phi(n)$ "--- функция Эйлера, т.е. количество простых чисел, меньших $n$. 
+
+Свойства функции Эйлера:
+
+\begin{enumerate}
+	\item $\phi(nm) = \phi(n)\phi(m)$, если $gcd(n,m) = 1$
+	\item Если $n = p_1^{\alpha_1}*...*p_s^{\alpha_s}$ "--- каноническое разложение на простые множители, то $\phi(n) = n(1 - \frac{1}{p_1})...(1 - \frac{1}{p_s})$
+\end{enumerate}
+
+
+\textbf{Доказательство}
+$Z_n^*$ "--- группа вычетов, взаимно простых с $n$. По условию $a \in Z_n^*$ и $\mid Z_n^* \mid = \phi(n)$. Значит, если $ord(a) = k$, то $\phi(n) \mathrel{\vdots} k$ и $a^{\phi(n)} \equiv 1 \pmod n$
+
+\vspace{10pt}
+
+\underline{Следствие (Малая теорема Ферма)}
+$a \in N, p$ "--- простое, то $a^p \equiv a \pmod n$
+
+\textbf{Доказательство}
+Если НОД($a,p$) $= 1$, то $a^\phi(p) \equiv 1 \pmod n$, то есть $a^{p-1} \equiv 1 \pmod n$. Домножение равенства на $a$ доказывает следствие. Если НОД($a,p$) $\neq 1$, то $a \mathrel{\vdots} p$ и $a^p \equiv a \equiv 0 \pmod n$
+\end{document}
