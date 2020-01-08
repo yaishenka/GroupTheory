@@ -92,7 +92,7 @@ $|\Omega| = \sum \limits_{i = 1}^{s} |\Omega_i| = \sum \limits_{i = 1}^{s} |G:St
 	
 	$I_a: G \rightarrow S(G), \  I_a(x) = axa^{-1} = x^{a^{-1}}$. Это действие, так как $I_{ab}(x) = abx(ab)^{-1} = abxb^{-1}a^{-1} = I_a(I_b(x))$.
 	
-	$G(x) = \{I_a(x) \mid a \in G\} = {axa^{-1} \mid G} = x^G$ "--- класс сопряженных элементов, порожденный $G$.
+	$G(x) = \{I_a(x) \mid a \in G\} = \{axa^{-1} \mid a \in G \} = x^G$ "--- класс сопряженных элементов, порожденный $G$.
 	
 	$St(x) = \{a \in G \mid axa^{-1} = x\} = \{a \in G\mid ax = xa\} = C_G(x)$ "--- централизатор элемента $x \in G$.
 \end{enumerate}
@@ -123,9 +123,9 @@ $I$ никогда не бывает свободна, так как $\forall a 
 
 $|x^G| = |G:C_G(x)|$. $\langle x \rangle \leq G$ "--- конечно.
 
-$|\langle x \rangle| = ord(x)$, очевидно $\langle x \rangle \leq C_G(x) \Rightarrow |C_G(x)| \  \vdots \  ord(x) \Rightarrow C_G(x) = nord(x), \  n \in N$ "--- по теореме Лагранжа.
+$|\langle x \rangle| = ord(x)$, очевидно $\langle x \rangle \leq C_G(x) \Rightarrow |C_G(x)| \  \vdots \  ord(x) \Rightarrow |C_G(x)| = ord(x)n, \  n \in N$ "--- по теореме Лагранжа.
 
-$|x^G| = \frac{|G|}{nord(x)}$
+$|x^G| = \frac{|G|}{ord(x)n}$
 
 \section{Автоморфизм}
 
@@ -147,6 +147,10 @@ $I_a(xy) = I_a(x)I_a(y)$, так как $I_a(xy) = (xy)^{a^{-1}} = y^{a^{-1}}x^{
 
 Было проверено, что множество внутренних автоморфизмов образует группу относительно композиции.
 
+\vspace{5pt}
+
+$Inn(G)$ "--- группа внутренних автоморфизмов.
+
 \vspace{10pt}
 
 \textbf{Утв.}
@@ -158,7 +162,7 @@ $Inn(G) \sim G/Z(G)$
 
 $Z(G) = KerI, \  ImI = \{I_a \mid I_a(x) = axa^{-1}\} =  Inn(G)$.
 
-$I: G \rightarrow S(G), \  I: G \rightarrow Inn(G), \  a \rightarrow Ia$. По основной теореме о гомоморфизме $Inn(G) \sim G/Z(G)$
+$I: G \rightarrow S(G), \  I: G \rightarrow Inn(G), \  a \rightarrow I_a$. По основной теореме о гомоморфизме $Inn(G) \sim G/Z(G)$
 
 \vspace{5pt}
 
@@ -206,9 +210,12 @@ $|G| = |Z(G)| + \sum \limits_{i = 1}^r |G:C_G(a_i)|$.
 \vspace{5pt}
 
 \textbf{Доказательство.}
+
+Пусть $|G| = p^n$.
+
 \begin{enumerate}
 	\item $G = Z(G) \Rightarrow Z(G)$ "--- нетривиален.
-	\item $G \neq Z(G) \Rightarrow r \geq 1$ в формуле классов. Значит, $C_G(a_i) \leq G \Rightarrow |C_G(a_i)| = p^{l_i}, \  0 \leq l_i < n$ "--- мощность централизатора (теорема Лагранжа). Или, что эквивалентно, орбита элемента $a_i$ нетривиальна.
+	\item $G \neq Z(G) \Rightarrow r \geq 1$ в формуле классов. Значит, $C_G(a_i) \leq G \Rightarrow |C_G(a_i)| = p^{l_i}, \  0 \leq l_i < n$ "--- порядок централизатора (теорема Лагранжа). Или, что эквивалентно, орбита элемента $a_i$ нетривиальна.
 	
 	$|Z(G)| = |G| - \sum \limits_{i=1}^r \frac{p^n}{p^{l_i}} = |G| - \sum \limits_{i=1}^r p^{n-l_i}$ "--- делится на $p$. Значит, $|Z(G)|$ делится на $p$.
 	

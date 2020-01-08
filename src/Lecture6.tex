@@ -33,7 +33,7 @@ $St(H) = \{a \in G \mid aHa^{-1}=H\} \in G$.
 
 \underline{Опр.} Полученная подгруппа "--- \textbf{нормализатор} подгруппы $H$ в $G$. Обозначение: $N_G(H)$.
 
-$N_G(H) = \{a \in G \mid aH = Ha\}$. $H \leq N_G(H)$, так как $\forall h \in H \  hH = Hh = H$. По критерию нормальности получаем $H \triangleleft N_G(H)$.
+$N_G(H) = \{a \in G \mid aH = Ha\}$. $H \leq N_G(H)$, так как $\forall h \in N_G(H) \  hH = Hh = H$. По критерию нормальности получаем $H \triangleleft N_G(H)$.
 
 Помимо нормализатора подгруппы существует и централизатор подгруппы $H$ в $G$.
 
@@ -55,7 +55,7 @@ $N_G(H) = \{a \in G \mid aH = Ha\}$. $H \leq N_G(H)$, так как $\forall h \
 
 \vspace{10pt}
 
-\underline{Опр.} Пусть $I : G \rightarrow S(G)$ "--- действие. $I$ \textbf{транзитивно}, если у него есть всего одна орбита $\Leftrightarrow \forall \omega_1, \omega_2 \in \Omega \  \exists a \in G: \  a(\omega_1) = \omega_2$.
+\underline{Опр.} Пусть $I : G \rightarrow S(\Omega)$ "--- действие. $I$ \textbf{транзитивно}, если у него есть всего одна орбита $\Leftrightarrow \forall \omega_1, \omega_2 \in \Omega \  \exists a \in G: \  a(\omega_1) = \omega_2$.
 
 \vspace{10pt}
 
@@ -95,9 +95,9 @@ $N(a) = |\{\omega \in \Omega \mid a(\omega) = \omega\}|$.
 
 Пусть $N_i(a) = |\{\omega \in \Omega_i \mid a(\omega) = \omega\}|$ "--- количество неподвижных точек $I_a$ в $\Omega_i$.
 
-Действие $I : G \rightarrow \Omega_i$ транзитивно по определению и $|G| = \sum \limits_{a \in G} N_i(a)$. Причем это верно для всех $i$. Просуммируем равенство по всем $i \in \{1, ..., s\}$.
+Действие $I : G \rightarrow S(\Omega_i)$ транзитивно по определению и $|G| = \sum \limits_{a \in G} N_i(a)$. Причем это верно для всех $i$. Просуммируем равенство по всем $i \in \{1, ..., s\}$.
 
-$S|G| = \sum \limits_{i = 1}^s \sum \limits_{a \in G} N_i(a) = \sum \limits_{a \in G} N(a)$.
+$s|G| = \sum \limits_{i = 1}^s \sum \limits_{a \in G} N_i(a) = \sum \limits_{a \in G} N(a)$.
 
 Выражение $\frac{\sum \limits_{a \in G} N(a)}{|G|}$ называется \textbf{средним числом неподвижных точек}.
 
@@ -182,7 +182,7 @@ $T = m_1T_1 \bigoplus m_2T_2 \bigoplus ... \bigoplus m_sT_s$ "--- попарно
 
 \section{Прямые и полупрямые произведения групп}
 
-\textbf{Опр.} Пусть $A, B$ "--- группы относительно произведения. \textbf{Внешнее прямое произведение} $A \times B$ "--- множество всех упорядоченных пар с операцией $(a_1, b_1)(a_2, b_2) = (a_1a_2, b_1, b_2) \in A \times B$.
+\textbf{Опр.} Пусть $A, B$ "--- группы относительно произведения. \textbf{Внешнее прямое произведение} $A \times B$ "--- множество всех упорядоченных пар с операцией $(a_1, b_1)(a_2, b_2) = (a_1a_2, b_1b_2) \in A \times B$.
 
 Это множество является группой с нейтральным элементом $(e,e)$ и обратным элементом $(a, b)^{-1} = (a^{-1}, b^{-1})$.
 
@@ -234,7 +234,7 @@ $T = m_1T_1 \bigoplus m_2T_2 \bigoplus ... \bigoplus m_sT_s$ "--- попарно
 	
 	\item Рассмотрим отображение $\phi: A \times B \rightarrow G, \  \phi(a,b) = ab$. По пункту 1, $\phi$ "--- гомоморфизм, так как $\phi(a_1, b_1)\phi(a_2, b_2) = a_1b_1a_2b_2 = a_1a_2b_1b_2 = \phi((a_1, b_1)(a_2, b_2))$. Причем $\phi$ сюръективно, так как $\forall x \in G \  x = ab, \  a \in A, b \in B$ по условию 3. Верно, что $Im(\phi) = G$.
 
-	Проверим, что $ker(\phi) = \{(e, e)\}$. Если $\phi(a, b) = e$, то $ab = e$. Значит $a = b^{-1}$. Но $ \in A, \   b^{-1} \in B$, значит $a = b = e$.
+	Проверим, что $ker(\phi) = \{(e, e)\}$. Если $\phi(ab) = e$, то $ab = e$. Значит $a = b^{-1}$. Но $ \in A, \   b^{-1} \in B$, значит $a = b = e$.
 \end{enumerate}
 
 \vspace{10pt}

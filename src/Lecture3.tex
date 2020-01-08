@@ -114,7 +114,7 @@ $Ker(p) = \{a \in G \mid p(a) = H\} = \{a \in G \mid aH = H\} = H$.
 	
 	$\phi(aH) = \phi(a)\phi(H) = \phi(a)*e_2 = k \Rightarrow aH \subset \phi^{-1}(k)$.
 	
-	Обратно, пусть $b \in \phi^{-1}(k)$ "--- произвольный элемент. Тогда $\phi(b) = k$, но $\phi(a) = k$. Значит, $\phi(a^{-1}b) = e_2$ "--- нейтральный элемент $K \Rightarrow a^{-1}b \in H \Rightarrow b \in aH \Rightarrow \phi^{-1}(k) \in aH$
+	Обратно, пусть $b \in \phi^{-1}(k)$ "--- произвольный элемент. Тогда $\phi(b) = k$, но $\phi(a) = k$. Значит, $\phi(a^{-1}b) = e_2$ "--- нейтральный элемент $K \Rightarrow a^{-1}b \in H \Rightarrow b \in aH \Rightarrow \phi^{-1}(k) \subset aH$
 	\item $\psi$ "--- гомоморфизм $Im(\phi)$ в $G/H$.
 	
 	Пусть $k_1, k_2 \in Im(\phi)$ и $\phi(a_1) = k_1, \phi(a_2) = k_2 \Rightarrow \psi(k_1) = a_1H, \psi(k_2) = a_2H$. Тогда $\phi(a_1a_2) = k_1k_2 \Rightarrow \psi(k_1k_2) = a_1a_2H = \psi(k_1)\psi(k_2)$.
@@ -146,11 +146,11 @@ $Ker(p) = \{a \in G \mid p(a) = H\} = \{a \in G \mid aH = H\} = H$.
 \vspace{10pt}
 
 \textbf{Пример:}
-Построить факторгруппу $GL_n(\mathbb{R})/SL_n(\mathbb{R})$ и найти, какой известной группе она изоморфна. $H = SL_n(\mathbb{R}: AH = BH$, $A,B$ "--- матрицы $\Leftrightarrow A^{-1}B \in H \Leftrightarrow det(A) = det(B)$. Класс смежности состоит из матриц с одинаковым определителем и параметризуется ненулевым числом $d$.
+Построить факторгруппу $GL_n(\mathbb{R})/SL_n(\mathbb{R})$ и найти, какой известной группе она изоморфна. $H = SL_n(\mathbb{R}): AH = BH$, $A,B$ "--- матрицы $\Leftrightarrow A^{-1}B \in H \Leftrightarrow det(A) = det(B)$. Класс смежности состоит из матриц с одинаковым определителем и параметризуется ненулевым числом $d$.
 
-Пусть $\phi: GL_n(\mathbb{R}) \rightarrow \mathbb{R}^*, \  \phi(A) = det(A)$, причем $\phi$ сюръективен, так т.к. $\forall d \in \mathbb{R}^* \exists A \in GL_n(\mathbb{R}), \  det(A) = d$
+Пусть $\phi: GL_n(\mathbb{R}) \rightarrow \mathbb{R}^*, \  \phi(A) = det(A)$, причем $\phi$ сюръективен, так т.к. $\forall d \in \mathbb{R}^* \ \exists A \in GL_n(\mathbb{R}), \  det(A) = d$
 
-По основной теореме о гомоморфизме $Ker(\phi) = SL_n(\mathbb{R})$ и $GL_n(\mathbb{R})/SL_n(\mathbb{R}) \simeq Im(\phi) = \mathbb{R}$.
+По основной теореме о гомоморфизме $Ker(\phi) = SL_n(\mathbb{R})$ и $GL_n(\mathbb{R})/SL_n(\mathbb{R}) \simeq Im(\phi) = \mathbb{R}^*$.
 
 \vspace{10pt}
 

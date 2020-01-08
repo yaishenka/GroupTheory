@@ -154,9 +154,9 @@ $K_1K_2 \triangleleft G$ "--- было доказано. $K_1K_2/K_2 \simeq K_1/
 
 База: $k = 0, \  H = \{e\}$
 
-Переход: Пусть $\exists$ подгруппа $H_k, \  |H_k| = p^k, \  k \leq n$. Покажем, что в $G$ есть подгрупаа порядка $k+1$ ($k + 1 \leq n)$. Пусть $Z = Z(G)$.
+Переход: Пусть $\exists$ подгруппа $H_k, \  |H_k| = p^k, \  k \leq n$. Покажем, что в $G$ есть подгрупаа порядка $p^{k+1}$ ($k + 1 \leq n)$. Пусть $Z = Z(G)$.
 
-$\exists a \in Z, \  a \neq e \Rightarrow \langle z \rangle \subset Z \Rightarrow ord(a) = p^l \Rightarrow$ в $\langle a \rangle$ есть элемент порядка $p$. Пусть $ord(z) = p$. $L = \langle z \rangle \triangleleft G$ (так как $z \in Z$). Рассмотрим $G/L$: $|G/L| \geq p^k$. По предположению индукции, в $G/L$ есть подгруппа порядка $p^k$. Пусть $H/L$ "--- подгруппа порядка $p^k$. Тогда $|H| = p^{k+1}$
+$\exists a \in Z, \  a \neq e \Rightarrow \langle a \rangle \subset Z \Rightarrow ord(a) = p^l \Rightarrow$ в $\langle a \rangle$ есть элемент порядка $p$. Пусть $ord(z) = p$. $L = \langle z \rangle \triangleleft G$ (так как $z \in Z$). Рассмотрим $G/L$: $|G/L| \geq p^k$. По предположению индукции, в $G/L$ есть подгруппа порядка $p^k$. Пусть $H/L$ "--- подгруппа порядка $p^k$. Тогда $|H| = p^{k+1}$
 
 \section{Простые группы}
 
@@ -185,12 +185,12 @@ $\exists a \in Z, \  a \neq e \Rightarrow \langle z \rangle \subset Z \Rightarro
 Пусть $|G:H| = 2$, $G$ "--- конечная группа. Тогда
 \begin{enumerate}
 	\item Если $C_G(h) \neq C_H(h)$, то $h^G = h^H$
-	\item Если $C_G(h) = C_H(h)$, то $h^H = \frac{h^G}{2}$, где $h^G = \{g^{-1}hg \mid g \in G\}$
+	\item Если $C_G(h) = C_H(h)$, то $|h^H| = \frac{|h^G|}{2}$, где $h^G = \{g^{-1}hg \mid g \in G\}$
 \end{enumerate}
 
 \textbf{Доказательство}
 \begin{enumerate}
-	\item Пусть $a \in C_G(h) \setminus C_H(h) \Rightarrow ah = ha \Leftrightarrow a \in G/H \Rightarrow G = H \cup aH$
+	\item Пусть $a \in C_G(h) \setminus C_H(h) \Rightarrow ah = ha \Leftrightarrow a \in G \setminus H \Rightarrow G = H \cup aH$
 	
 	$h^G = h^{(H \cup aH)} = h^H \cup h^{aH} = h^H \cup (h^a)^H = h^H \cup h^H = h^H$
 	
